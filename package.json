@@ -1,0 +1,25 @@
+{
+  "name": "matischatbot",
+  "version": "1.0.0",
+  "description": "react bot for messages",
+  "main": "index.js",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.11.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "backend": "nodemon index.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "author": "Austin Kellum",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.3"
+  }
+}
