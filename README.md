@@ -10,8 +10,8 @@ Current this application has the backend and frontend servers setup to run toget
     
 ##   TO RUN APPLICATION:
         //will run both frontend and backend simultaneously 
-        execute "npm run dev"
+        execute "yarn run dev"
         //will run node.js server seperately
-        execute "npm run backend"
+        execute "yarn run backend"
         //will run react.js server seperately
-         execute "npm run frontend"
+         execute "yarn run frontend"
