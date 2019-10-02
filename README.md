@@ -1,6 +1,6 @@
-# MWFrontEnd
+# myWizard chatbot UI.
 
-myWizard chatbot UI.
+
 Current this application has the backend and frontend servers setup to run together via "concurrently npm package". The client side has a proxy installed to handle CORS mechanism. All traffic from client side to backend will be trasmitted with out interuption from browser security. 
 
     NOTE:
@@ -9,7 +9,7 @@ Current this application has the backend and frontend servers setup to run toget
         - in the clien//SETUP PROXY MIDDLEWARE TO BYPASS CORS MECHANISM 
     
     TO RUN APPLICATION:
-        //will run both frontend and backend
+        //will run both frontend and backend simultaneously 
         execute "npm run dev"
         //will run node.js server seperately
         execute "npm run backend"
