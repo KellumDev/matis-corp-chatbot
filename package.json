@@ -1,5 +1,5 @@
 {
-  "name": "matischatbot",
+  "name": "reactchatbot",
   "version": "1.0.0",
   "description": "react bot for messages",
   "main": "index.js",
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon index.js",
-    "frontend": "npm run start --prefix client",
+    "frontend": "npm run start --prefix rn-mywizard",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "author": "Austin Kellum",
