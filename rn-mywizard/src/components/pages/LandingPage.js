@@ -1,5 +1,5 @@
 import React from 'react';
-import Mbody from '../messagerWindow/messagerbody';
+import Chatbot from '../chatbot/chatbot';
 
 const Landing = () => {
     return (
@@ -7,8 +7,7 @@ const Landing = () => {
 
             <h1>myWizard Chatbot</h1>
             <h2>baby mantis proto</h2>
-            <Mbody />
-
+            <Chatbot />
         </div>
     )
 }
