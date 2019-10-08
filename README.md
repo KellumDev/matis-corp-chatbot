@@ -15,3 +15,9 @@ Current this application has the backend and frontend servers setup to run toget
         execute "yarn run backend"
         //will run react.js server seperately
          execute "yarn run frontend"
+
+        //stop server 
+        contr + c
+        //restart server
+        type: rs then press enter
+        
