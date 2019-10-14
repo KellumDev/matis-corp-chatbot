@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "reactpageagent-ferthp",
+  "private_key_id": "cc392e41da9a01a5ec25309f9a180812fea1f03e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDci59NtsOmMp7l\nb6gHh0/6rPu29FBeduWoo4yGc5Oj4uFQUFlycLHBf2BkD9Z3+X9JQ3UcbAMkbjRW\n4JoEYzWBEHLAR0EN811G3uA+PSKspu2uo0iqR8VhfLIKAcL7dFkyqNYDOuYMOnA2\nx8DZbirCN3WdKfCZsf6JsTxOx+cT4FmLbdZuZaYBC5mZTH7iScvKqNwRIVBDN+ht\nkSegYlzgwjnu5toWaY85z7K16xPEFh7DN9XTPv+ojbtGxFgZKd38oyOSWr/Dw0da\ncyEzz4ULuKXt9jmilKMhVohoPmD+pswKOiPWzmV0ZbN2zzSQ/4MMUplQeG9YLmqC\nD0uVSOnzAgMBAAECggEAG4D6C+oH+jkD4d8L2GyCh+N8vLM5Np6jQ2WqB7ZwKhcI\nPEjY7tGpCVWGQtRKzcl6mztjZnj951QrCM6XxoZMzNytQtdgAIpiDo2K75gWM+vZ\nZlcMn9e1gNPZLDBODafT2+J8VgjJWasMBXjhzvvTL0dVTpVFYRV2hdtphvWdFrg/\njIYDTaGPELqaadjEGetuhWeWe1y3BLSBNZ9HTO3ZjRuak8/8PfAUJsI5efMwdYx0\nyTYp4GVmBmnAd9uF0qaMHSKA//T+iX/KgSsgTo64pzGrvYH5tdgj29GjHHd2iGL0\nYPnNG04urUisuLhWWa2fD4JfTgRIt0aHYjYzN+kZKQKBgQDxl1j+ytelmr3BGKFg\n0PYT4ZkjGcwhnZJDQ8tFhdWeqwlSCJKX8Lv8NX7kGrY/yKoRdvBbzae2olo+txIm\n2M2CmEJ3hNOY2IyTAwzss09F3yz9ZmOFvYbnV3kZ9afZCbyW6si4TDQB0C3r8Te3\nHs30DKuUrVsuiVHog3N7pQLcvQKBgQDpsvGsJJO2N/T6mVBQkdPAZ2nfZo2lIKJ7\n+EyatoAi4dXbm7NyOteTPb/msBvp6oq00meEVz2QYhPStfj92HOzIwTsgBs64x9G\nZnIXwfbj7wyNliWhY4IDNJjWR2hMgtKQ9oewGnV94BCAKA98IUm/c2BEHbFS3RsB\n1JYxKR1EbwKBgHd5W1+VvJN/NPv7TENu02L9nBfJuDOfkyeErU/SYdQ3zUIuTyCo\nwq51Xi08MIjWmZRNd4xO5fPh0jNVobpoWSmOVsB4hZP+83X4ejnMaxWoyrz+F5Wa\nJs7daVw3KiyhLgyMS3so5EdJRox6HA2JRFy+r1O1b3RSIJmV+FRbRFEZAoGAdRgA\n+TS2gjWVXL7WvBflFmF6bcIPtK4eW6k0kMxidZfcNJXWGqUbAJ6O+YJB6jlnWGSY\nE3o20ZIixpAA+weqKRahz/H8Msw8DmUkQ30fPGO5UXPq1Otr6DlBXxQWUUe3Q4US\nxYzsU66h9eScpaB0OCYSFO8fuxon/wnKW0VzcacCgYEArdDI+3i+bxOOVL0pzfUt\nMniqJEzOv90f6/OvlyPeoCtUHu/3sCtPBRFju08m2E+iVk+LjUUrqbA+F/tVLP5h\nsWljxlopD5Uy022NFzfhq+XL5v3FfAK8ue4wjZ4Uvzi29XQ/cZ8Liu64a2VnI4Yx\n4v5JUFjrDG6KqUEOfsvjgSw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "rpa-dialogflow@reactpageagent-ferthp.iam.gserviceaccount.com",
+  "client_id": "113694109043189628585",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rpa-dialogflow%40reactpageagent-ferthp.iam.gserviceaccount.com"
+}
