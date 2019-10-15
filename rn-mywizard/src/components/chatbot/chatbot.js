@@ -8,9 +8,9 @@ class Chatbot extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.handleInputkey = this.handleInputkey.bind(this);
-        
+
         this.state = {
             messages: []
         }
@@ -29,16 +29,30 @@ class Chatbot extends Component {
 
         this.setState({ messages: [...this.state.messages, myConversation] });
 
-        const res = await axios.post(url, { text });
-
-        for (let msg of res.data.fulfillmentMessages) {
-            let says = {
-                speak: 'bot',
-                msg: msg
+        axios.post(url, { text }).then(response => {
+            
+            for (let msg of response.data.fulfillmentMessages) {
+                let says = {
+                    speak: 'bot',
+                    msg: msg
+                }
+                this.setState({ messages: [...this.state.messages, says] });
             }
-            this.setState({ messages: [...this.state.messages, says] });
         }
-    }
+
+        );
+
+
+        // const res = await axios.post(url, { text });
+
+        // for (let msg of res.data.fulfillmentMessages) {
+        //     let says = {
+        //         speak: 'bot',
+        //         msg: msg
+        //     }
+        //     this.setState({ messages: [...this.state.messages, says] });
+        // }
+    }//end textQueryWrapper
 
     renderMessages(returnedMessages) {
         if (returnedMessages) {
@@ -54,10 +68,12 @@ class Chatbot extends Component {
     //     console.log('[WELCOME TO MY WIZARD CHATBOT]');
     // }
 
-    handleInputkey(e) {
+    handleInputkey(e) { 
+        let a = e.target.value
+        console.log(a); 
         if (e.key === 'Enter') {
-            e.target.value = '';
-            this.textQueryWrapper(e.target.value);
+            //e.target.value = 'hello';
+            this.textQueryWrapper(a);
 
         }
     }
