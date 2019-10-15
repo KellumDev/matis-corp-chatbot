@@ -5,36 +5,73 @@ import axios from "axios/index";
 import Message from './message';
 
 class Chatbot extends Component {
-   
-    state = { 
-        messages: []
+
+    constructor(props) {
+        super(props);
+        
+        this.handleInputkey = this.handleInputkey.bind(this);
+        
+        this.state = {
+            messages: []
+        }
     }
 
-    text_query = (text) =>{
-        let url = '/api/text_query'; 
-        const res = await axios.post(url, {text}); 
-    } 
+    textQueryWrapper = async (text) => {
+        let url = 'http://localhost:5000/api_dftext';
+        let myConversation = {
+            speaks: 'me',
+            msg: {
+                text: {
+                    text: text
+                }
+            }
+        };
+
+        this.setState({ messages: [...this.state.messages, myConversation] });
+
+        const res = await axios.post(url, { text });
+
+        for (let msg of res.data.fulfillmentMessages) {
+            let says = {
+                speak: 'bot',
+                msg: msg
+            }
+            this.setState({ messages: [...this.state.messages, says] });
+        }
+    }
 
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
                 return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
-            }
-            )
+            })
         } else {
-            return null;
+            return '[*NO MESSAGES*]';
         }
     }
 
+    // componentDidMount() {
+    //     console.log('[WELCOME TO MY WIZARD CHATBOT]');
+    // }
+
+    handleInputkey(e) {
+        if (e.key === 'Enter') {
+            e.target.value = '';
+            this.textQueryWrapper(e.target.value);
+
+        }
+    }
 
     render() {
         return (
-            <div style={{ height: 400, width: 400, marginLeft: '30%', borderColor: 'black',
-            borderWidth: 1 }}>
+            <div style={{
+                height: 400, width: 400, marginLeft: '30%', borderColor: 'black',
+                borderWidth: 1
+            }}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
                     <h2>Chatbot</h2>
                     {this.renderMessages(this.state.messages)}
-                    <input type="text" />
+                    <input type="text" onKeyPress={this.handleInputkey} />
                 </div>
             </div>
         )

@@ -29,7 +29,7 @@ router.post('/', urlencodedParser, (req, res) => {
 
 
 router.post('/api_dftext', urlencodedParser,async (req, res) => {
-   
+   // const responseHandler = response => response;
     let request = {
 
         session: sessionPath,
@@ -43,11 +43,11 @@ router.post('/api_dftext', urlencodedParser,async (req, res) => {
         },
     };
     console.log("**[RESPONSE FROM CLIENT]**\n", request);
-    let responses = await sessionClient
-        .detectIntent(request);
-
+    let responses = await sessionClient.detectIntent(request);
+     //   await response = responseHandler;  
     res.send(responses[0].queryResult);
-
+    return responses; 
+    
 });
 
 module.exports = router; 
