@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mywizard-scrum-virtual-assi-vm",
+  "private_key_id": "f8156f3847ed48bc44020c4319356868375509db",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCjvQUL2rjstaHm\nqpegz+1EI/0QfwyIYVjpYu0csUv++8clvEXnTUYo+vyOE79Bv9/j079OzqGrDJua\nsWyUTo2/lBmANFVSNtjxZDLHXVb55Z+P81wKxc473Puedk1bxj4FStxSXSzUTzzO\nP/euPrAB4C/tEbJ8tEh50F5Z0Xaff03AvSnuZ0GOcfS5iI5WoJxc0UFSWkbKYENk\nGnBOAAjEhAJcH1X+lFJzc3E1uTuXA4kzDPtNm3oi1VyiJWctwlnKVy/2A/IZ8z0/\nQXSwOI5AGQ8xrEAVkS8lmMbQktNDTetuOAoK5SsrmpGZltaAy4sSp5j0wMJj2eWt\nF9WRchsPAgMBAAECggEAD/weCAA8WW+J9LjmwJ5L7YEN7ZRZpt7KDU7JEyoD30q5\nMGfm8yPKG6oVCdHHtCWFN/quDIWDpu0+K6Xyka/xiqhsrOVvBu2v1DER/ACSwya1\noxoA/FQ/Q/zY26l09+asm1upkqjh/YAW0ZPRHEOmbyhxxVUa9a2r/ahn7aDTUdK1\nq6nWyg2Kq17r5mS5jacmdHY2604T+t/yjm63yRAjat1VcdJoFtAZ27rbH/9nRZ5v\nT6FXl+d2VrIQy2JYYpK0w3mNy+lakwGVRJRs60NRLiybKuoQvf1rIGIre52RUO0X\nIYUMa0PQBEAre0bERx0olv7iVfrqH+8ef5ClFxuGIQKBgQDd6Q+6rRqN38cSar+F\nlS8GV6KJvorK/SQ1cuSZW4kergL8g6w9kOCX977H7kxONJ4YtpIXyo0ZmFs7G5J6\nhfQMIY5A1Sr1vnjBE3BsAjdUZXJoxkwIuSnoNOknKY3ggFDebHbaW94JNSN9vQ5E\nC0KiXfNmNKBBKXDlsuTqyBuzNwKBgQC85ELSuwEhHrgJjCO0ZOgZRtsyHWnhZTR5\nj4dgW9xJcAWcpXrICNzqGtjMYDZMpzq/tVoHjahBZ6Znusje2rz256v+g7ZlQXbK\n/UEWxs2XlXAZbz9rdHwJ+BOUiZutma3nXuWFI0uAtberIYFOw0L6oBQYTsLzjMlA\nsLCwsr7y6QKBgD4/snnbNSe3LlCsQS1nu9k7nAyntqdae13C7P1YAA7rIUtUZGyg\nx1/Zz1qmLiGCARdNn42s9AfKBU1/XoegK+V7RDxLj9F/rL/8g/zIYlz6WC2r8og/\n6NGKhhzGO1ZOqGC8bFq0ioRqs5oB/o532ilR0YVKHeophdHpbO2vVJXhAoGBAIcc\nx2ew+AfWz1GU+l0o6JRcCKJ6Q6hEGhrxvaYBTzsAdCMugvrezBZwia73CyAdZnqG\noBVTEI1oNLFx/AjccdoysOZnFGqtPunH6Wz/W0QYUoz+9GBKfActeeP/4ml0yd38\nFTT8oB863Fv+pV3PcfOP2Y/hlrVbeQFa4agi008xAoGAUznULbBawnTLi0Uc57Zs\n/o0n5JPmoqeNQhWwDmhJMcxqctveQ8/etAZ2QPXYqESRMDWnOSeW2EqkMyEdm9w5\nD0rvbR+7TYfHF2/Sn0eudawiZncahEGRrgYuvvKpoWyt+bw+dIRN4ipmhyu0eN+l\nAHPAajqHtP3iY204+Qi6Y3Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-gqdwrc@mywizard-scrum-virtual-assi-vm.iam.gserviceaccount.com",
+  "client_id": "107971270730492393357",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-gqdwrc%40mywizard-scrum-virtual-assi-vm.iam.gserviceaccount.com"
+}

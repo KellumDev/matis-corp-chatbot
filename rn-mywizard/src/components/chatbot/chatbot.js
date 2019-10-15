@@ -30,7 +30,8 @@ class Chatbot extends Component {
         this.setState({ messages: [...this.state.messages, myConversation] });
 
         axios.post(url, { text }).then(response => {
-            
+
+           
             for (let msg of response.data.fulfillmentMessages) {
                 let says = {
                     speak: 'bot',
@@ -38,6 +39,7 @@ class Chatbot extends Component {
                 }
                 this.setState({ messages: [...this.state.messages, says] });
             }
+            console.log(['*********CLIENT STRUCTURE**********\n'],response);
         }
 
         );
@@ -87,7 +89,7 @@ class Chatbot extends Component {
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
                     <h2>Chatbot</h2>
                     {this.renderMessages(this.state.messages)}
-                    <input type="text" onKeyPress={this.handleInputkey} />
+                    <input type="text" onKeyPress={ (a) => this.handleInputkey(a)} />
                 </div>
             </div>
         )
