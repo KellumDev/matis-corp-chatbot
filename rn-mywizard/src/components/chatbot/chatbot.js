@@ -19,7 +19,7 @@ class Chatbot extends Component {
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
         let myConversation = {
-            speaks: 'me',
+            speaks: 'user',
             msg: {
                 text: {
                     text: text
@@ -43,17 +43,7 @@ class Chatbot extends Component {
         }
 
         );
-
-
-        // const res = await axios.post(url, { text });
-
-        // for (let msg of res.data.fulfillmentMessages) {
-        //     let says = {
-        //         speak: 'bot',
-        //         msg: msg
-        //     }
-        //     this.setState({ messages: [...this.state.messages, says] });
-        // }
+ 
     }//end textQueryWrapper
 
     renderMessages(returnedMessages) {
