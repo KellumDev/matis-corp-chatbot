@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
 import axios from "axios/index";
 
 import Message from './message';
-
+//import Input from './inputBox'; 
 class Chatbot extends Component {
 
     constructor(props) {
@@ -31,19 +30,19 @@ class Chatbot extends Component {
 
         axios.post(url, { text }).then(response => {
 
-           
+
             for (let msg of response.data.fulfillmentMessages) {
                 let says = {
-                    speak: 'bot',
+                    speaks: 'bot',
                     msg: msg
                 }
                 this.setState({ messages: [...this.state.messages, says] });
             }
-            console.log(['*********CLIENT STRUCTURE**********\n'],response);
+            console.log(['*********CLIENT STRUCTURE**********\n'], response);
         }
 
         );
- 
+
     }//end textQueryWrapper
 
     renderMessages(returnedMessages) {
@@ -60,9 +59,9 @@ class Chatbot extends Component {
     //     console.log('[WELCOME TO MY WIZARD CHATBOT]');
     // }
 
-    handleInputkey(e) { 
+    handleInputkey(e) {
         let a = e.target.value
-        console.log(a); 
+        console.log(a);
         if (e.key === 'Enter') {
             //e.target.value = 'hello';
             this.textQueryWrapper(a);
@@ -73,13 +72,14 @@ class Chatbot extends Component {
     render() {
         return (
             <div style={{
-                height: 400, width: 400, marginLeft: '30%', borderColor: 'black',
+                height: 600, width: 600, marginLeft: '30%', borderColor: 'black',
                 borderWidth: 1
             }}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
-                    <h2>Chatbot</h2>
+
                     {this.renderMessages(this.state.messages)}
-                    <input type="text" onKeyPress={ (a) => this.handleInputkey(a)} />
+                   
+                    <input style={styles.inputbar} type="text" onKeyPress={(a) => this.handleInputkey(a)} />
                 </div>
             </div>
         )
@@ -88,14 +88,14 @@ class Chatbot extends Component {
 
 
 
-// const styles = StyleSheet.create({
-//     bigblue: {
-//             color: 'blue',
-//             fontWeight: 'bold',
-//             fontSize: 20,
-//             borderColor: 'black',
-//             borderWidth: 1
-//     }
-// }); 
+const styles = {
+    inputbar: {
+        color: '#97ca3d',
+        // fontWeight: 'bold',
+        // fontSize: 20,
+        // borderColor: 'black',
+        // borderWidth: 1
+    }
+}
 
 export default Chatbot; 
