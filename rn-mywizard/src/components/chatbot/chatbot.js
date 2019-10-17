@@ -55,10 +55,6 @@ class Chatbot extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     console.log('[WELCOME TO MY WIZARD CHATBOT]');
-    // }
-
     handleInputkey(e) {
         let a = e.target.value
         console.log(a);
@@ -71,14 +67,11 @@ class Chatbot extends Component {
 
     render() {
         return (
-            <div style={{
-                height: 600, width: 600, marginLeft: '30%', borderColor: 'black',
-                borderWidth: 1
-            }}>
+            <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
 
                     {this.renderMessages(this.state.messages)}
-                   
+
                     <input style={styles.inputbar} type="text" onKeyPress={(a) => this.handleInputkey(a)} />
                 </div>
             </div>
@@ -89,12 +82,24 @@ class Chatbot extends Component {
 
 
 const styles = {
+    cbcontainer: {
+        backgroundColor: 'red',
+        height: '60%',
+        width: '70%',
+        marginLeft: '30%',
+        borderColor: 'black',
+        border: 'solid 5px #97ca3d',
+        padding: '2%',
+        borderBottomLeftRadius: '10px',
+        borderBottomRightRadius: '10px',
+        borderTopLeftRadius: '10px',
+        borderTopRightRadius: '10px'
+
+    },
+
     inputbar: {
         color: '#97ca3d',
-        // fontWeight: 'bold',
-        // fontSize: 20,
-        // borderColor: 'black',
-        // borderWidth: 1
+        backgoundColor: 'green'
     }
 }
 
