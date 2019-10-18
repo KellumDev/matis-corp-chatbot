@@ -91,7 +91,7 @@ const styles = {
         border: 'solid 5px #97ca3d',
         padding: '2%',
         paddingLeft: '3%',
-        marginLeft: '15%',
+       marginLeft: '15%',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
@@ -101,7 +101,17 @@ const styles = {
 
     inputbar: {
         color: '#97ca3d',
-        backgoundColor: 'green'
+        backgroundColor: '#1a237e',
+        paddingTop: '3%',
+        paddingBottom: '3%',
+        fontSize: '1.4em'
+        
+        //border: 'solid px #1a237e',
+       // borderBottomLeftRadius: '2px',
+        // borderBottomRightRadius: '2px',
+        // borderTopLeftRadius: '2px',
+        // borderTopRightRadius: '2px',
+     //  padding: '2%'
     }
 }
 
