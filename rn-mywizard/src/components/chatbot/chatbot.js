@@ -59,7 +59,7 @@ class Chatbot extends Component {
         let a = e.target.value
         console.log(a);
         if (e.key === 'Enter') {
-            //e.target.value = 'hello';
+        
             this.textQueryWrapper(a);
 
         }
@@ -77,19 +77,21 @@ class Chatbot extends Component {
             </div>
         )
     }
-}
+}//end chatbot
 
 
 
 const styles = {
     cbcontainer: {
-        backgroundColor: 'red',
+       // backgroundColor: 'red',
         height: '60%',
         width: '70%',
         marginLeft: '30%',
         borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',
+        paddingLeft: '3%',
+        marginLeft: '15%',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
