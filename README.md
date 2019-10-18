@@ -28,4 +28,5 @@ Current this application has the backend and frontend servers setup to run toget
 ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\keith.n.boggs.DIR\OneDrive - Accenture\hey_myWizard\private_key.json"
 
 ###     2. run the backend and frontend servers 
+####    yarn run dev
 
