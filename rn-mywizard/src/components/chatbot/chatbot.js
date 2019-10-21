@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios/index";
 
 import Message from './message';
-//import Input from './inputBox'; 
+import Input from './inputBox'; 
 class Chatbot extends Component {
 
     constructor(props) {
@@ -45,6 +45,9 @@ class Chatbot extends Component {
 
     }//end textQueryWrapper
 
+    inithandleAlert = () => {
+        console.alert('clicked'); 
+    } 
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
@@ -65,13 +68,13 @@ class Chatbot extends Component {
         }
     }
 
+ 
     render() {
         return (
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
 
                     {this.renderMessages(this.state.messages)}
-
                     <input style={styles.inputbar} type="text" onKeyPress={(a) => this.handleInputkey(a)} />
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const inputBox = (props) => {
     return (
         <div class="row">
