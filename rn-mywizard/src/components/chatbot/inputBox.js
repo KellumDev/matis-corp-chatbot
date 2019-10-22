@@ -3,10 +3,10 @@ import React from 'react';
 
 const inputBox = (props) => {
     return (
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card indigo">
-                    <div class="card-content white-text">
+        <div className="row">
+            <div className="col s12 m6">
+                <div className="card indigo">
+                    <div className="card-content white-text">
 
                         <input type="text" onKeyPress={props.keypress}  />
                     </div>
