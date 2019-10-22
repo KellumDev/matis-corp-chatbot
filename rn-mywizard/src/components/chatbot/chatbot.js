@@ -77,6 +77,7 @@ class Chatbot extends Component {
                     <InputBar 
                         style={styles.inputbar} 
                         keypress={(a) => this.handleInputkey(a)} 
+                        txtToSpeech={ (a) => this.handleInputkey(a)}
                     />
                 </div>
             </div>
@@ -88,7 +89,7 @@ class Chatbot extends Component {
 
 const styles = {
     cbcontainer: {
-       // backgroundColor: 'red',
+        backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
         marginLeft: '30%',
@@ -96,28 +97,15 @@ const styles = {
         border: 'solid 5px #97ca3d',
         padding: '2%',
         paddingLeft: '3%',
-       marginLeft: '15%',
+        marginLeft: '15%',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
         borderTopRightRadius: '10px'
 
-    },
-
-    inputbar: {
-        color: '#97ca3d',
-        backgroundColor: '#1a237e',
-        paddingTop: '3%',
-        paddingBottom: '3%',
-        fontSize: '1.4em'
-        
-        //border: 'solid px #1a237e',
-       // borderBottomLeftRadius: '2px',
-        // borderBottomRightRadius: '2px',
-        // borderTopLeftRadius: '2px',
-        // borderTopRightRadius: '2px',
-     //  padding: '2%'
     }
+
+     
 }
 
 export default Chatbot; 
