@@ -1,19 +1,26 @@
 import React from 'react';
 
-
-const inputBox = (props) => {
+const InputBox = (props) => {
+ 
     return (
         <div className="row">
-            <div className="col s12">
+            <div className="col s12 m12">
                 <div className="card indigo">
                     <div className="card-content white-text">
 
-                        <input type="text" onKeyPress={props.keypress} onChange={props.txtToSpeech }/>
+                        <input className="textinput" type="text"
+                            defaultValue={props.paramsAtranscript}
+                            onKeyPress={props.paramsCkeyinput}
+                        />
                     </div>
-                </div>
+                </div> 
+                <a  className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i>  </a>
+ 
             </div>
         </div>
-    );
-};
+    )
 
-export default inputBox;
+
+}
+
+export default InputBox;

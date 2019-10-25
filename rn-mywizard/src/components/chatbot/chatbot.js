@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 import axios from "axios/index";
 
 import Message from './message';
-import InputBar from './inputBox'; 
+
+
+//import Speech from './Speech'; 
+import InputBox from './inputBox';
+import SpeechAPI from '../chatbot/speechAPi/speechAPI';
+
+
+
 class Chatbot extends Component {
 
     constructor(props) {
         super(props);
 
-        this.handleInputkey = this.handleInputkey.bind(this);
+        //  this.handleInputkey = this.handleInputkey.bind(this);
 
         this.state = {
-            messages: []
+            messages: [],
+            speechTxt: ''
         }
     }
 
@@ -45,9 +53,67 @@ class Chatbot extends Component {
 
     }//end textQueryWrapper
 
-    inithandleAlert = () => {
-        console.log('clicked'); 
-    } 
+
+    handleInputkey = (e) => {
+        let a = e.target.value
+        console.log(a);
+        if (e.key === 'Enter') {
+
+            this.textQueryWrapper(a);
+
+        }
+    }
+
+    speechHandle = async () => {
+       
+    const SpeechRecognition = window.webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
+
+    recognition.continous = true
+    recognition.interimResults = true
+    recognition.lang = 'en-US'
+    recognition.start()
+
+    console.log('reconition started');
+    //get results from reconition 
+    recognition.addEventListener('result', e => {
+        // console.log(e.results)
+        let results = e.results;
+        //transverse through array 
+        const transcript = Array.from(results)
+            .map(result => result[0])
+            .map(result => result.transcript)
+            //join the two arrays at the end
+            .join('')
+
+        console.log(transcript);
+        this.setState({speechTxt: transcript});
+
+        
+    })
+
+    recognition.addEventListener('end', recognition.start);
+
+        // let result = await getSpeech();
+        // let b = updateState(result);
+        // console.log(b);
+
+        // const getSpeech = () => {
+        //     return new Promise(resolve => {
+        //         let result = SpeechAPI.speech();
+        //         resolve(result);
+        //     });
+        // }
+        // const updateState = (newState) => {
+       
+
+        //     this.setState({
+        //         speechTxt: newState
+        //     });
+        // }
+    }
+
+
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
@@ -58,27 +124,21 @@ class Chatbot extends Component {
         }
     }
 
-    handleInputkey(e) {
-        let a = e.target.value
-        console.log(a);
-        if (e.key === 'Enter') {
-        
-            this.textQueryWrapper(a);
 
-        }
-    }
 
- 
+
     render() {
         return (
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
                     {this.renderMessages(this.state.messages)}
-                    <InputBar 
-                        style={styles.inputbar} 
-                        keypress={(a) => this.handleInputkey(a)} 
-                        txtToSpeech={ (a) => this.handleInputkey(a)}
+
+                    <InputBox
+                        click={this.speechHandle}
+                        paramsAtranscript={this.state.speechTxt}
+                        
                     />
+
                 </div>
             </div>
         )
@@ -105,7 +165,7 @@ const styles = {
 
     }
 
-     
+
 }
 
 export default Chatbot; 

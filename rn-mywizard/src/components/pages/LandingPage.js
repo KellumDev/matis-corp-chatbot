@@ -1,11 +1,14 @@
 import React from 'react';
 import Chatbot from '../chatbot/chatbot';
-import Input from '../chatbot/inputBox'; 
-//import img from '../../images/mywizardbk.jpg'; 
+// import Input from '../chatbot/inputBox'; 
+// import TestTextToSpeech from '../textToSpeech/testTextToSpeech'; 
+// import RnSpeechKit from '../textToSpeech/rnSpeechKit';
+// import Speech from '../textToSpeech/Speech'; 
 const Landing = () => {
     return (
         
         <div className="Landing-Page" style={styles.background} >
+              
             <h1>myWizard Chatbot</h1>
             <h2>Green mantis proto</h2>
             <Chatbot />
