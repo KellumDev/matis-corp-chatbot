@@ -1,41 +1,48 @@
 
 
+class SpeechAPI {
 
-const initializeRecognition = () => {
+    constructor() {
+        const SpeechRecognition = window.webkitSpeechRecognition
+        this.recognition = new SpeechRecognition()
+        console.log('[INITIALIZED REC] \n', this.recognition); 
+      
+    }
+ 
+    //constructor method, start the transcript  and return a transcript value
+    startSpeech() {
+       
+        console.log('[START REC] \n'); 
+        this.recognition.continous = true
+            this.recognition.interimResults = true
+            this.recognition.lang = 'en-US'
+            this.recognition.start()
+        
+            console.log('reconition started');
+            //get results from reconition 
+            this.recognition.addEventListener('result', e => {
+                // console.log(e.results)
+                let results = e.results;
+                //transverse through array 
+                const transcript = Array.from(results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    //join the two arrays at the end
+                    .join('')
+        
+                console.log(transcript);
+                return transcript;
+            })
+        
+            this.recognition.addEventListener('end', this.recognition.start);
+    }
 
-    const SpeechRecognition = window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-    return recognition;
+    //constructor method, stop the transcript 
+    stopSpeech() {
+
+       this.recognition.stop();
+    }
+
 }
 
-
-const startSpeech = () => {
-
-    let rec = initializeRecognition()
-    rec.continous = true
-    rec.interimResults = true
-    rec.lang = 'en-US'
-    rec.start()
-
-    console.log('reconition started');
-    //get results from reconition 
-    rec.addEventListener('result', e => {
-        // console.log(e.results)
-        let results = e.results;
-        //transverse through array 
-        const transcript = Array.from(results)
-            .map(result => result[0])
-            .map(result => result.transcript)
-            //join the two arrays at the end
-            .join('')
-
-        console.log(transcript);
-        return transcript;
-    })
-
-    rec.addEventListener('end', rec.start);
-
-    
-}//end speech
-
-export default { startSpeech }
+export default SpeechAPI; 

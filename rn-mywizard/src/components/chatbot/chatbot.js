@@ -15,11 +15,9 @@ class Chatbot extends Component {
     constructor(props) {
         super(props);
 
-        //  this.handleInputkey = this.handleInputkey.bind(this);
-
-        this.state = {
+         this.state = {
             messages: [],
-            speechTxt: ''
+            speechTxt: '',
         }
     }
 
@@ -65,52 +63,8 @@ class Chatbot extends Component {
     }
 
     speechHandle = async () => {
-       
-    const SpeechRecognition = window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-
-    recognition.continous = true
-    recognition.interimResults = true
-    recognition.lang = 'en-US'
-    recognition.start()
-
-    console.log('reconition started');
-    //get results from reconition 
-    recognition.addEventListener('result', e => {
-        // console.log(e.results)
-        let results = e.results;
-        //transverse through array 
-        const transcript = Array.from(results)
-            .map(result => result[0])
-            .map(result => result.transcript)
-            //join the two arrays at the end
-            .join('')
-
-        console.log(transcript);
-        this.setState({speechTxt: transcript});
-
-        
-    })
-
-    recognition.addEventListener('end', recognition.start);
-
-        // let result = await getSpeech();
-        // let b = updateState(result);
-        // console.log(b);
-
-        // const getSpeech = () => {
-        //     return new Promise(resolve => {
-        //         let result = SpeechAPI.speech();
-        //         resolve(result);
-        //     });
-        // }
-        // const updateState = (newState) => {
-       
-
-        //     this.setState({
-        //         speechTxt: newState
-        //     });
-        // }
+        const a = new SpeechAPI();
+         a.startSpeech();
     }
 
 
@@ -136,7 +90,7 @@ class Chatbot extends Component {
                     <InputBox
                         click={this.speechHandle}
                         paramsAtranscript={this.state.speechTxt}
-                        
+
                     />
 
                 </div>
