@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import axios from "axios/index";
 
 import Message from './message';
-//import Input from './inputBox'; 
+
+ 
+import InputBox from './inputBox'; 
+
+const SpeechRecognition = window.webkitSpeechRecognition
+const reconition = new SpeechRecognition()
+
 class Chatbot extends Component {
 
     constructor(props) {
         super(props);
 
-        this.handleInputkey = this.handleInputkey.bind(this);
-
-        this.state = {
-            messages: []
-        }
     }
 
+    state = {
+        listening: false,
+        finalTranscript: "",
+        messages: []
+    }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
         let myConversation = {
@@ -45,6 +51,59 @@ class Chatbot extends Component {
 
     }//end textQueryWrapper
 
+
+    handleInputkey = (e) => {
+        let a = e.target.value
+        console.log(a);
+        if (e.key === 'Enter') {
+
+            this.textQueryWrapper(a);
+
+        }
+    }
+
+    speechHandle = async () => {
+
+        const listen = this.state.listening;
+
+        if (!listen) {
+
+            this.setState({ listening: true });
+
+            console.log('[START REC] \n');
+            reconition.continous = true
+            reconition.interimResults = true
+            reconition.lang = 'en-US'
+            reconition.start()
+
+            console.log('reconition started');
+            //get results from reconition 
+            reconition.addEventListener('result', e => {
+                // console.log(e.results)
+                const results = e.results;
+                //transverse through array 
+                const transcript = Array.from(results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    //join the two arrays at the end
+                    .join('')
+ 
+                reconition.onresult = () => {
+                    console.log(transcript);
+                    this.setState({ finalTranscript: transcript });
+                    return transcript;
+                };
+            })//end if
+
+        } else if (listen) {
+
+            console.log('[STOP]')
+            reconition.stop();
+            this.setState({ listening: false });
+        }
+    }//end speechHandle
+
+
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
@@ -55,24 +114,18 @@ class Chatbot extends Component {
         }
     }
 
-    handleInputkey(e) {
-        let a = e.target.value
-        console.log(a);
-        if (e.key === 'Enter') {
-        
-            this.textQueryWrapper(a);
-
-        }
-    }
-
     render() {
         return (
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
-
                     {this.renderMessages(this.state.messages)}
 
-                    <input style={styles.inputbar} type="text" onKeyPress={(a) => this.handleInputkey(a)} />
+                    <InputBox
+                        click={this.speechHandle}
+                        transcript={this.state.finalTranscript}
+
+                    />
+
                 </div>
             </div>
         )
@@ -83,36 +136,23 @@ class Chatbot extends Component {
 
 const styles = {
     cbcontainer: {
-       // backgroundColor: 'red',
+        backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
-        marginLeft: '30%',
+        //marginLeft: '30%',
         borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',
         paddingLeft: '3%',
-       marginLeft: '15%',
+        marginLeft: '15%',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
         borderTopRightRadius: '10px'
 
-    },
-
-    inputbar: {
-        color: '#97ca3d',
-        backgroundColor: '#1a237e',
-        paddingTop: '3%',
-        paddingBottom: '3%',
-        fontSize: '1.4em'
-        
-        //border: 'solid px #1a237e',
-       // borderBottomLeftRadius: '2px',
-        // borderBottomRightRadius: '2px',
-        // borderTopLeftRadius: '2px',
-        // borderTopRightRadius: '2px',
-     //  padding: '2%'
     }
+
+
 }
 
 export default Chatbot; 
