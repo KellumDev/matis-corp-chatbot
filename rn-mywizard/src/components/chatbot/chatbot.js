@@ -3,24 +3,24 @@ import axios from "axios/index";
 
 import Message from './message';
 
+ 
+import InputBox from './inputBox'; 
 
-//import Speech from './Speech'; 
-import InputBox from './inputBox';
-import SpeechAPI from '../chatbot/speechAPi/speechAPI';
-
-
+const SpeechRecognition = window.webkitSpeechRecognition
+const reconition = new SpeechRecognition()
 
 class Chatbot extends Component {
 
     constructor(props) {
         super(props);
 
-         this.state = {
-            messages: [],
-            speechTxt: '',
-        }
     }
 
+    state = {
+        listening: false,
+        finalTranscript: "",
+        messages: []
+    }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
         let myConversation = {
@@ -63,9 +63,45 @@ class Chatbot extends Component {
     }
 
     speechHandle = async () => {
-        const a = new SpeechAPI();
-         a.startSpeech();
-    }
+
+        const listen = this.state.listening;
+
+        if (!listen) {
+
+            this.setState({ listening: true });
+
+            console.log('[START REC] \n');
+            reconition.continous = true
+            reconition.interimResults = true
+            reconition.lang = 'en-US'
+            reconition.start()
+
+            console.log('reconition started');
+            //get results from reconition 
+            reconition.addEventListener('result', e => {
+                // console.log(e.results)
+                const results = e.results;
+                //transverse through array 
+                const transcript = Array.from(results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    //join the two arrays at the end
+                    .join('')
+ 
+                reconition.onresult = () => {
+                    console.log(transcript);
+                    this.setState({ finalTranscript: transcript });
+                    return transcript;
+                };
+            })//end if
+
+        } else if (listen) {
+
+            console.log('[STOP]')
+            reconition.stop();
+            this.setState({ listening: false });
+        }
+    }//end speechHandle
 
 
     renderMessages(returnedMessages) {
@@ -78,9 +114,6 @@ class Chatbot extends Component {
         }
     }
 
-
-
-
     render() {
         return (
             <div style={styles.cbcontainer}>
@@ -89,7 +122,7 @@ class Chatbot extends Component {
 
                     <InputBox
                         click={this.speechHandle}
-                        paramsAtranscript={this.state.speechTxt}
+                        transcript={this.state.finalTranscript}
 
                     />
 
@@ -106,7 +139,7 @@ const styles = {
         backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
-        marginLeft: '30%',
+        //marginLeft: '30%',
         borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',

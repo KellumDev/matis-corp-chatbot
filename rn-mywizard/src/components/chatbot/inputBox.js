@@ -4,17 +4,17 @@ const InputBox = (props) => {
  
     return (
         <div className="row">
-            <div className="col s12 m12">
+            <div className="col  m12">
                 <div className="card indigo">
                     <div className="card-content white-text">
 
                         <input className="textinput" type="text"
-                            defaultValue={props.paramsAtranscript}
+                            defaultValue={props.transcript}
                             onKeyPress={props.paramsCkeyinput}
                         />
                     </div>
                 </div> 
-                <a  className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i>  </a>
+                <button  className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i> Start </button>
  
             </div>
         </div>
