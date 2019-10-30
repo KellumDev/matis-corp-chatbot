@@ -10,11 +10,7 @@ const SpeechRecognition = window.webkitSpeechRecognition
 const reconition = new SpeechRecognition()
 
 class Chatbot extends Component {
-
-    constructor(props) {
-        super(props);
-
-    }
+ 
 
     state = {
         listening: false,
@@ -123,6 +119,7 @@ class Chatbot extends Component {
                     <InputBox
                         click={this.speechHandle}
                         transcript={this.state.finalTranscript}
+                        onkeypress={this.handleInputkey}
 
                     />
 

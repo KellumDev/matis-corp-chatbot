@@ -10,7 +10,7 @@ const InputBox = (props) => {
 
                         <input className="textinput" type="text"
                             defaultValue={props.transcript}
-                            onKeyPress={props.paramsCkeyinput}
+                            onKeyPress={props.onkeypress}
                         />
                     </div>
                 </div> 
