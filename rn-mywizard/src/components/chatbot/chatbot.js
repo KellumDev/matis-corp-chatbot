@@ -12,9 +12,9 @@ const reconition = new SpeechRecognition()
 //------------------------SPEECH SYNTHESIS----------------------------- 
 
 /**
- * 
- * $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\private_key.json"
- ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\private_key.json"
+ * C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json
+ * $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json"
+ ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json"
  */
 const synth = window.speechSynthesis;
 
@@ -26,7 +26,8 @@ class Chatbot extends Component {
         listening: false,
         finalTranscript: "",
         messages: [],
-        SingleBotmessage: ''
+        SingleBotmessage: '',
+        welcomeMessage: 'Welcome to myWizard. How may I help you?'
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';

@@ -15,7 +15,7 @@ const InputBox = (props) => {
                         />
                     </div>
                 </div> 
-                <button  className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i> Start </button>
+                <button  className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i> Voice </button>
  
             </div>
         </div>

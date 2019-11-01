@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mywiz-cc-test-uijmks",
+  "private_key_id": "a726059f3532eb6d1aeaf3e4f1045913581c6d7d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCcrRWiPYKKmutx\nOVsVPG0sFFVT0tgtFk7+dC7hesy3UAGIVottGqE+aB1cyzR1xP6iw2qlAuVrPT8z\ntQ4XI0XILmHyy5OAZb+K64fy+0hcmiXb8r8dXlpHfZNo5sezAYWVb4O7UvGPq73E\nzaD+8nOCcJjlREU6Ow1xpPpw/vSGS97ThmYoG20wHPYUd+R/2lVqAbSb0WogmJn7\n/FQJRiBO35nE8J200LxhdPHAQIrhXjzp8xNTubzwK8kavN6l+K3HH8DPdJlTAYoG\n4jMz8xm0HVYITbVEQO6RGHBbRJJ3u/wQ+n9IfwTABjtdNZ5XXyRAJh6aXWtGFhFN\ngbbrJ46LAgMBAAECgf9K+Ifhmo1cxcTj6Q4smz2iWhh6g+ntqT8jg3TrcFeFYENb\neg49pwCBXFCwlowDzsAKInhlfX1KU4RqubiEWdyKbadxBvkN96IwV4Q2QQffR+PV\n29KXuw54Jx7ik4v7nD7PwwzGFmqA1S15fuwLEvky8a44BvMZaiiEuO0eJOHdYLD7\ni7aY5jqR7D+83sHnehTJVII4SpzXJ/AygcDJrBVTuGBDT/bElzAKXs2p1+g85D/G\n2vfkVRQlNx6cD9WSD99S8IQ/8S6BJvjcGPKoGGxRvbu/qu5DBjE0Jl238u940hRT\nlM8J4LWbk9y8Lr3vBrIkBuu/31aAq+KKfvLGgeECgYEAzsvjr4Vx2pZF4U29H12i\nWfHFhCF/1so02oxUwGi58CFSKB0jYrsi0woRx3iaBcZ9OgB7U6DquD19iHql1sIj\n5gQrKwXQWqquQhIe5U0sK+HOOQFMxTUPqehdD0lvH7JXhGYtxO7EYUWHYzwwkiFa\ngYwSIcR+udbnhhY3dRUgSOECgYEAwfRU+0y+1YnZjJqYTGWluiK9I9WkePB5G7GZ\nDUO1NWdut7Lm4PJASj4wSpnkBXUpIvOyy7hzIPTwkn5GKyPJZ96EEbwk6RZjAODD\ntNC+ZzU7JnPhN0J8mNHQIZsaFvw8p2zQn/pA6YRYPuui4BUQ51FkUOTuLxVNFLLW\nS7fRqOsCgYAQ3ACJC8kXeA7kanETwI9+474lopGIkl2yv6QdN6yJDj5jdNSwtO8G\n45hFeeictez5sJZdYA4izSiR2uXwV02T8B0Q2d19ttKUImQQb7U9MqCcdyWqIkRP\nptkHaQY9QE3wRmBO4ORzxbZe+cY/86YsT54e0KVAQ2wGu4Lz8a/7IQKBgELiRwwC\nAy0QRH1AMpTl2Ki/ognher5Z7uml7OmuF6c66+tdPlEEOTdhCrYvK3rWVEFBWL73\n9HvA+9UIxpnJ1YKEMXcMMo5OsgVzfQm1knN039j6zQeJXf41HFj6a5zRjvkNhUQl\nwIzGnsfT6m7r1NBwOO/MgnaqGdKxeUTTNvHRAoGBAMGu9og3eldPuaaTKhivABq/\nR+nwB7m45/19ZFOfB9xLdGtp67w2oIHgR3PeeuafU908C1Js8RqUmJTC0kJ0a09c\n43gzQG3O2QRxo9tvT3K6Vn2gT9XyIgC4ZdGVn/LmknmSjNgAie9r5QfgdkFsrY77\nBJGGwaX9+JsMn/ikhzek\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-qgxngw@mywiz-cc-test-uijmks.iam.gserviceaccount.com",
+  "client_id": "104887548068833785753",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-qgxngw%40mywiz-cc-test-uijmks.iam.gserviceaccount.com"
+}
