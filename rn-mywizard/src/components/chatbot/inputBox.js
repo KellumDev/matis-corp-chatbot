@@ -9,7 +9,8 @@ const InputBox = (props) => {
                     <div className="card-content white-text">
 
                         <input className="textinput" type="text"
-                            defaultValue={props.transcript}
+                            value={props.transcript}
+                            onChange={props.change}
                             onKeyPress={props.onkeypress}
                         />
                     </div>

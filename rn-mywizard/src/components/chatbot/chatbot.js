@@ -3,19 +3,30 @@ import axios from "axios/index";
 
 import Message from './message';
 
- 
-import InputBox from './inputBox'; 
+
+import InputBox from './inputBox';
 
 const SpeechRecognition = window.webkitSpeechRecognition
 const reconition = new SpeechRecognition()
 
+//------------------------SPEECH SYNTHESIS----------------------------- 
+
+/**
+ * 
+ * $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\private_key.json"
+ ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\private_key.json"
+ */
+const synth = window.speechSynthesis;
+
+
 class Chatbot extends Component {
- 
+
 
     state = {
         listening: false,
         finalTranscript: "",
-        messages: []
+        messages: [],
+        SingleBotmessage: ''
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
@@ -39,6 +50,7 @@ class Chatbot extends Component {
                     msg: msg
                 }
                 this.setState({ messages: [...this.state.messages, says] });
+                this.setState({ SingleBotmessage: msg });
             }
             console.log(['*********CLIENT STRUCTURE**********\n'], response);
         }
@@ -48,13 +60,68 @@ class Chatbot extends Component {
     }//end textQueryWrapper
 
 
-    handleInputkey = (e) => {
+    handleInputkey = async (e) => {
         let a = e.target.value
         console.log(a);
-        if (e.key === 'Enter') {
 
-            this.textQueryWrapper(a);
+        // if (e.key === 'Enter') {
+        //     this.textQueryWrapper(a) 
+        //     // //respond with voice capability 
+        //     // let messages = this.state.messages.say.msg; 
+        //     // this.textQueryWrapper(a) 
+        //     // this.voiceOutput(messages); 
 
+        // }else{
+
+        // }
+        // {
+        //     "listening": false,
+        //     "finalTranscript": "welcome to my world",
+        //     "messages": [
+        //       "Object",
+        //       "Object"
+        //     ],
+        //     "SingleBotmessage": {
+        //       "platform": "PLATFORM_UNSPECIFIED",
+        //       "text": {
+        //         "text": [
+        //           "Answer not found. Please consult google. (DUHHHH!)"
+        //         ]
+        //       },
+        //       "message": "text"
+        //     }
+        //   }
+
+        let expression = this.state.listening;
+        switch (expression) {
+            case false:
+                if (e.key === 'Enter') {
+                    this.textQueryWrapper(a);
+                }
+                //   this.speechhandler(this.state.ttFinalTranscript);
+                console.log('[ SPEECH OFF ]');
+                break;
+            case true:
+                // let messages = this.state.messages.msg.text.text[0];
+                //let lastmessage = messages.length -1 ;
+                this.speechHandle();
+                if (e.key === 'Enter') {
+                    this.textQueryWrapper(a);
+                    setTimeout(() => {
+
+                        let messages = this.state.messages[1].msg.text.text[0];
+                        console.log('[ VOICE  RESPONSE ] \n', messages);
+                        this.voiceOutput(messages);
+                    }, 3000);
+                }
+
+                console.log('[ SPEECH ON ]');
+                // use voice to text and text to voice 
+
+
+                break;
+            default:
+            // code block
         }
     }
 
@@ -83,7 +150,7 @@ class Chatbot extends Component {
                     .map(result => result.transcript)
                     //join the two arrays at the end
                     .join('')
- 
+
                 reconition.onresult = () => {
                     console.log(transcript);
                     this.setState({ finalTranscript: transcript });
@@ -99,6 +166,23 @@ class Chatbot extends Component {
         }
     }//end speechHandle
 
+
+    voiceOutput = (input) => {
+
+        console.log('[VOICE ENABLED]');
+        var utterThis = new SpeechSynthesisUtterance(input);
+        synth.speak(utterThis);
+
+    }
+
+    transcriptHandler = () => {
+        return this.state.finalTranscript; 
+    }
+
+    keyStrokeHandler = (event) => {
+       let keystroke = event.target.value; 
+        this.setState({finalTranscript: keystroke})
+    }
 
     renderMessages(returnedMessages) {
         if (returnedMessages) {
@@ -119,6 +203,7 @@ class Chatbot extends Component {
                     <InputBox
                         click={this.speechHandle}
                         transcript={this.state.finalTranscript}
+                        change={this.keyStrokeHandler || this.transcriptHandler }
                         onkeypress={this.handleInputkey}
 
                     />
