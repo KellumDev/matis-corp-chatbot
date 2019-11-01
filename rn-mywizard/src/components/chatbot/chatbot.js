@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios/index";
 
 import Message from './message';
-
+import SingleBotmessage from './SingleBotMessage'
 
 import InputBox from './inputBox';
 
@@ -163,6 +163,16 @@ class Chatbot extends Component {
         this.setState({ finalTranscript: keystroke })
     }
 
+    componentDidMount = () => {
+        setTimeout( () => {
+            let speaks = 'bot'
+            console.log(this.state.welcomeMessage);
+                return <SingleBotmessage speaks={speaks} text={this.state.welcomeMessage} />; 
+          
+            
+           
+        } , 2000)
+    }
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
@@ -178,7 +188,7 @@ class Chatbot extends Component {
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
                     {this.renderMessages(this.state.messages)}
-
+                    {/* <SingleBotmessage speaks={'bot'} text={this.state.welcomeMessage} /> */}
                     <InputBox
                         click={this.speechHandle}
                         transcript={this.state.finalTranscript}
