@@ -64,34 +64,6 @@ class Chatbot extends Component {
         let a = e.target.value
         console.log(a);
 
-        // if (e.key === 'Enter') {
-        //     this.textQueryWrapper(a) 
-        //     // //respond with voice capability 
-        //     // let messages = this.state.messages.say.msg; 
-        //     // this.textQueryWrapper(a) 
-        //     // this.voiceOutput(messages); 
-
-        // }else{
-
-        // }
-        // {
-        //     "listening": false,
-        //     "finalTranscript": "welcome to my world",
-        //     "messages": [
-        //       "Object",
-        //       "Object"
-        //     ],
-        //     "SingleBotmessage": {
-        //       "platform": "PLATFORM_UNSPECIFIED",
-        //       "text": {
-        //         "text": [
-        //           "Answer not found. Please consult google. (DUHHHH!)"
-        //         ]
-        //       },
-        //       "message": "text"
-        //     }
-        //   }
-
         let expression = this.state.listening;
         switch (expression) {
             case false:
@@ -102,14 +74,20 @@ class Chatbot extends Component {
                 console.log('[ SPEECH OFF ]');
                 break;
             case true:
-                // let messages = this.state.messages.msg.text.text[0];
-                //let lastmessage = messages.length -1 ;
+
                 this.speechHandle();
                 if (e.key === 'Enter') {
                     this.textQueryWrapper(a);
                     setTimeout(() => {
-
-                        let messages = this.state.messages[1].msg.text.text[0];
+                        /**
+                         * let  messages = this.state.messages[],
+                                lastmessage = messages.length -1,
+                                result = lastmessage.msg.text.text[0];
+                            ;
+                             
+                         */
+                       let messages = this.state.messages[1].msg.text.text[0];
+                         
                         console.log('[ VOICE  RESPONSE ] \n', messages);
                         this.voiceOutput(messages);
                     }, 3000);
@@ -176,12 +154,12 @@ class Chatbot extends Component {
     }
 
     transcriptHandler = () => {
-        return this.state.finalTranscript; 
+        return this.state.finalTranscript;
     }
 
     keyStrokeHandler = (event) => {
-       let keystroke = event.target.value; 
-        this.setState({finalTranscript: keystroke})
+        let keystroke = event.target.value;
+        this.setState({ finalTranscript: keystroke })
     }
 
     renderMessages(returnedMessages) {
@@ -203,7 +181,7 @@ class Chatbot extends Component {
                     <InputBox
                         click={this.speechHandle}
                         transcript={this.state.finalTranscript}
-                        change={this.keyStrokeHandler || this.transcriptHandler }
+                        change={this.keyStrokeHandler || this.transcriptHandler}
                         onkeypress={this.handleInputkey}
 
                     />
