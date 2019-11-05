@@ -10,7 +10,7 @@ const Landing = () => {
         <div className="Landing-Page" style={styles.background} >
               
             <h1>myWizard Chatbot</h1>
-            <h2>Green mantis proto</h2>
+            
             <Chatbot />
         </div>
     )

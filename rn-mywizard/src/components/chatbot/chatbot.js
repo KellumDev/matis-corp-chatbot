@@ -27,7 +27,8 @@ class Chatbot extends Component {
         finalTranscript: "",
         messages: [],
         SingleBotmessage: '',
-        welcomeMessage: 'Welcome to myWizard. How may I help you?'
+        welcomeMessage: 'Welcome to myWizard. How may I help you?',
+        hmeMounted: false
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
@@ -81,9 +82,9 @@ class Chatbot extends Component {
                     this.textQueryWrapper(a);
                     setTimeout(() => {
                         /**
-                         * let  messages = this.state.messages[],
-                                lastmessage = messages.length -1,
-                                result = lastmessage.msg.text.text[0];
+                         * let   let messages =  [...this.state.messages.slice(-1)],
+                       botmsg = messages.msg.text.text[0];
+                          
                             ;
                              
                          */
@@ -141,17 +142,17 @@ class Chatbot extends Component {
 
             console.log('[STOP]')
             reconition.stop();
+            synth.cancel(); 
             this.setState({ listening: false });
+           
         }
     }//end speechHandle
 
 
     voiceOutput = (input) => {
-
         console.log('[VOICE ENABLED]');
         var utterThis = new SpeechSynthesisUtterance(input);
         synth.speak(utterThis);
-
     }
 
     transcriptHandler = () => {
@@ -163,16 +164,16 @@ class Chatbot extends Component {
         this.setState({ finalTranscript: keystroke })
     }
 
-    componentDidMount = () => {
+    componentDidMount= () => {
         setTimeout( () => {
-            let speaks = 'bot'
+          //  let speaks = 'bot'
             console.log(this.state.welcomeMessage);
-                return <SingleBotmessage speaks={speaks} text={this.state.welcomeMessage} />; 
-          
-            
-           
+       
+            this.setState({hmeMounted: true});
+              //  return <SingleBotmessage id={"welc-message"} speaks={speaks} text={this.state.welcomeMessage} />; 
         } , 2000)
     }
+
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
@@ -184,9 +185,15 @@ class Chatbot extends Component {
     }
 
     render() {
+        let homeCm = ""; 
+        if(this.state.hmeMounted){
+            homeCm=<SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />; 
+        }
         return (
+            
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
+                {homeCm}
                     {this.renderMessages(this.state.messages)}
                     {/* <SingleBotmessage speaks={'bot'} text={this.state.welcomeMessage} /> */}
                     <InputBox
