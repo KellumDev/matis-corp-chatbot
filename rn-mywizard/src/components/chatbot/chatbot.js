@@ -88,8 +88,8 @@ class Chatbot extends Component {
                             ;
                              
                          */
-                       let messages = this.state.messages[1].msg.text.text[0];
-                         
+                        let messages = this.state.messages[1].msg.text.text[0];
+
                         console.log('[ VOICE  RESPONSE ] \n', messages);
                         this.voiceOutput(messages);
                     }, 3000);
@@ -142,9 +142,9 @@ class Chatbot extends Component {
 
             console.log('[STOP]')
             reconition.stop();
-            synth.cancel(); 
+            synth.cancel();
             this.setState({ listening: false });
-           
+
         }
     }//end speechHandle
 
@@ -164,17 +164,17 @@ class Chatbot extends Component {
         this.setState({ finalTranscript: keystroke })
     }
 
-    componentDidMount= () => {
-        setTimeout( () => {
-          //  let speaks = 'bot'
-            console.log(this.state.welcomeMessage);
-       
-            this.setState({hmeMounted: true});
-              //  return <SingleBotmessage id={"welc-message"} speaks={speaks} text={this.state.welcomeMessage} />; 
-        } , 2000)
+    componentDidMount = () => {
+       this.welcomeMessage(); 
     }
 
-    renderMessages(returnedMessages) {
+    welcomeMessage = () => {
+        setTimeout(() => {
+            this.setState({ hmeMounted: true });
+        }, 2000)
+    }
+
+    renderMessages = (returnedMessages) => {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
                 return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
@@ -185,15 +185,17 @@ class Chatbot extends Component {
     }
 
     render() {
-        let homeCm = ""; 
-        if(this.state.hmeMounted){
-            homeCm=<SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />; 
+        let homeCm = "";
+        if (this.state.hmeMounted) {
+            homeCm = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
+            this.voiceOutput(this.state.welcomeMessage);
+
         }
         return (
-            
+
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
-                {homeCm}
+                    {homeCm}
                     {this.renderMessages(this.state.messages)}
                     {/* <SingleBotmessage speaks={'bot'} text={this.state.welcomeMessage} /> */}
                     <InputBox
