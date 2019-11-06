@@ -21,6 +21,7 @@ const synth = window.speechSynthesis;
 
 class Chatbot extends Component {
 
+    messagesEnd;
 
     state = {
         listening: false,
@@ -165,9 +166,9 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
-       this.welcomeMessage(); 
+        this.welcomeMessage();
     }
-
+   
     welcomeMessage = () => {
         setTimeout(() => {
             this.setState({ hmeMounted: true });
@@ -185,20 +186,23 @@ class Chatbot extends Component {
     }
 
     render() {
-        let homeCm = "";
+        let heyMywizardWelcom = "";
+
+
         if (this.state.hmeMounted) {
-            homeCm = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
-            this.voiceOutput(this.state.welcomeMessage);
+            heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
+            //   this.voiceOutput(this.state.welcomeMessage);
 
         }
         return (
 
             <div style={styles.cbcontainer}>
-                <div id="chatbot" style={{ height: '100%', width: '100%', overflow: 'auto' }}>
-                    {homeCm}
+                <div id="chatbot" style={{ height: '550px', width: '100%', overflow: 'auto' }}>
+                    {heyMywizardWelcom}
                     {this.renderMessages(this.state.messages)}
-                    {/* <SingleBotmessage speaks={'bot'} text={this.state.welcomeMessage} /> */}
+                     
                     <InputBox
+
                         click={this.speechHandle}
                         transcript={this.state.finalTranscript}
                         change={this.keyStrokeHandler || this.transcriptHandler}
@@ -219,7 +223,6 @@ const styles = {
         backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
-        //marginLeft: '30%',
         borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',
@@ -229,9 +232,11 @@ const styles = {
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
         borderTopRightRadius: '10px'
-
+    },
+    message: {
+        clear: 'both',
+        float: 'left'
     }
-
 
 }
 
