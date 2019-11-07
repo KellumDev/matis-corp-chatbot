@@ -172,6 +172,32 @@ class Chatbot extends Component {
         setTimeout(() => {
             this.setState({ hmeMounted: true });
         }, 2000)
+
+        // let url = 'http://localhost:5000/api_dftext';
+        // let myConversation = {
+        //     speaks: 'user',
+        //     msg: {
+        //         text: {
+        //             text: text
+        //         }
+        //     }
+        // };
+
+        // this.setState({ messages: [...this.state.messages, myConversation] });
+
+        // axios.post(url, { text }).then(response => {
+
+
+        //     for (let msg of response.data.fulfillmentMessages) {
+        //         let says = {
+        //             speaks: 'bot',
+        //             msg: msg
+        //         }
+        //         this.setState({ messages: [...this.state.messages, says] });
+        //         this.setState({ SingleBotmessage: msg });
+        //     }
+        //     console.log(['*********CLIENT STRUCTURE**********\n'], response);
+        // }); 
     }
 
     renderMessages = (returnedMessages) => {
@@ -188,7 +214,7 @@ class Chatbot extends Component {
         let homeCm = "";
         if (this.state.hmeMounted) {
             homeCm = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
-            this.voiceOutput(this.state.welcomeMessage);
+           // this.voiceOutput(this.state.welcomeMessage);
 
         }
         return (
