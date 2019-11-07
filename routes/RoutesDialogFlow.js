@@ -52,4 +52,26 @@ router.post('/api_dftext', urlencodedParser,async (req, res) => {
     
 });
 
+// router.post('/api_dfevent', urlencodedParser,async (req, res) => {
+     
+//      let request = {
+ 
+//          session: sessionPath,
+//          queryInput: {
+//              event: {
+//                  // The query to send to the dialogflow agent
+//                  name: event,
+//                  // The language used by the client (en-US)
+//                  languageCode: config.dialogFLowSessionLanguageCode,
+//              },
+//          },
+//      };
+//      console.log("**[RESPONSE FROM CLIENT]**\n", request);
+//      let responses = await sessionClient.detectIntent(request);
+//       //   await response = responseHandler;  
+//      res.send(responses[0].queryResult);
+//      return responses; 
+     
+//  });
+
 module.exports = router; 

@@ -62,11 +62,10 @@ class Chatbot extends Component {
 
     }//end textQueryWrapper
 
-
     handleInputkey = async (e) => {
         let a = e.target.value
         console.log(a);
-
+        //if the voice button was clicked then voice output should be used 
         let expression = this.state.listening;
         switch (expression) {
             case false:
@@ -74,32 +73,25 @@ class Chatbot extends Component {
                     this.textQueryWrapper(a);
                 }
                 //   this.speechhandler(this.state.ttFinalTranscript);
-                console.log('[ SPEECH OFF ]');
+                console.log('[ SPEECH IS OFF ]');
                 break;
+                
             case true:
-
+                
+                console.log('[ SPEECH IS ON ]');
                 this.speechHandle();
                 if (e.key === 'Enter') {
                     this.textQueryWrapper(a);
                     setTimeout(() => {
-                        /**
-                         * let   let messages =  [...this.state.messages.slice(-1)],
-                       botmsg = messages.msg.text.text[0];
-                          
-                            ;
-                             
-                         */
-                        let messages = this.state.messages[1].msg.text.text[0];
 
-                        console.log('[ VOICE  RESPONSE ] \n', messages);
-                        this.voiceOutput(messages);
+                        let messages = [...this.state.messages],
+                            botmessage = messages.slice(-1)[0].msg.text.text[0];
+
+                        console.log('[ VOICE  RESPONSE ] \n', botmessage);
+                        this.voiceOutput(botmessage);
                     }, 3000);
                 }
-
-                console.log('[ SPEECH ON ]');
-                // use voice to text and text to voice 
-
-
+ 
                 break;
             default:
             // code block
@@ -168,7 +160,7 @@ class Chatbot extends Component {
     componentDidMount = () => {
         this.welcomeMessage();
     }
-   
+
     welcomeMessage = () => {
         setTimeout(() => {
             this.setState({ hmeMounted: true });
@@ -200,7 +192,7 @@ class Chatbot extends Component {
                 <div id="chatbot" style={{ height: '550px', width: '100%', overflow: 'auto' }}>
                     {heyMywizardWelcom}
                     {this.renderMessages(this.state.messages)}
-                     
+
                     <InputBox
 
                         click={this.speechHandle}
