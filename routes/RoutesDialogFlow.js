@@ -50,28 +50,34 @@ router.post('/api_dftext', urlencodedParser,async (req, res) => {
     res.send(responses[0].queryResult);
     return responses; 
     
-});
+}); //end text
 
-// router.post('/api_dfevent', urlencodedParser,async (req, res) => {
-     
-//      let request = {
+router.post('/api_dfevent', urlencodedParser,async (req, res) => {
+    //const input = req.body.text; 
+    // res.send("Welcome bruh, take a look around and you will see!");
+    // console.log(input);
+
+    let events = 'welcome'; 
+
+     let request = {
  
-//          session: sessionPath,
-//          queryInput: {
-//              event: {
-//                  // The query to send to the dialogflow agent
-//                  name: event,
-//                  // The language used by the client (en-US)
-//                  languageCode: config.dialogFLowSessionLanguageCode,
-//              },
-//          },
-//      };
-//      console.log("**[RESPONSE FROM CLIENT]**\n", request);
-//      let responses = await sessionClient.detectIntent(request);
-//       //   await response = responseHandler;  
-//      res.send(responses[0].queryResult);
-//      return responses; 
+         session: sessionPath,
+         queryInput: {
+             event: {
+                 // The query to send to the dialogflow agent
+                 name: events,
+                 
+                 // The language used by the client (en-US)
+                 languageCode: config.dialogFLowSessionLanguageCode,
+             },
+         },
+     };
+     console.log("**[RESPONSE FROM CLIENT]**\n", request);
+     let responses = await sessionClient.detectIntent(request);
+      //   await response = responseHandler;  
+     res.send(responses[0].queryResult);
+     return responses; 
      
-//  });
+ });//end event 
 
 module.exports = router; 
