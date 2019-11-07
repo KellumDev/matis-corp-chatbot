@@ -8,7 +8,7 @@ const InputBox = (props) => {
                 <div className="card indigo">
                     <div className="card-content white-text">
 
-                        <input className="textinput" type="text"  minLength="4" maxLength="48"  
+                        <input className="textinput" type="text"  minLength="4" maxLength="150"  
                             value={props.transcript}
                             onChange={props.change}
                             onKeyPress={props.onkeypress}
