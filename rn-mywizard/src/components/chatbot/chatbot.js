@@ -17,6 +17,7 @@ const reconition = new SpeechRecognition()
  ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json"
  */
 const synth = window.speechSynthesis;
+const synthTwo = window.speechSynthesis;
 
 
 class Chatbot extends Component {
@@ -28,8 +29,9 @@ class Chatbot extends Component {
         finalTranscript: "",
         messages: [],
         SingleBotmessage: '',
-        welcomeMessage: 'Welcome to myWizard. How may I help you?',
-        hmeMounted: false
+        welcomeMessage: '',
+        hmeMounted: false,
+        defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?'
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
@@ -62,26 +64,46 @@ class Chatbot extends Component {
 
     }//end textQueryWrapper
 
+    clearInputHandler = () => {
+
+        let a = "";
+        this.setState({ finalTranscript: a });
+    }
+
+    sendButtonHandler = () => {
+
+        let finalTranscript = this.state.finalTranscript;
+
+        this.textQueryWrapper(finalTranscript);
+        this.clearInputHandler();
+    }
+
     handleInputkey = async (e) => {
+        //set the transcript with keystrokes
         let a = e.target.value
-        console.log(a);
+        this.setState({ finalTranscript: a })
+        let finalTranscript = this.state.finalTranscript;
         //if the voice button was clicked then voice output should be used 
         let expression = this.state.listening;
+
         switch (expression) {
             case false:
+
                 if (e.key === 'Enter') {
-                    this.textQueryWrapper(a);
+                    this.textQueryWrapper(finalTranscript);
+                    this.clearInputHandler();
                 }
                 //   this.speechhandler(this.state.ttFinalTranscript);
                 console.log('[ SPEECH IS OFF ]');
                 break;
-                
+
             case true:
-                
+
                 console.log('[ SPEECH IS ON ]');
                 this.speechHandle();
                 if (e.key === 'Enter') {
-                    this.textQueryWrapper(a);
+                    this.textQueryWrapper(finalTranscript);
+                    this.clearInputHandler();
                     setTimeout(() => {
 
                         let messages = [...this.state.messages],
@@ -91,7 +113,7 @@ class Chatbot extends Component {
                         this.voiceOutput(botmessage);
                     }, 3000);
                 }
- 
+
                 break;
             default:
             // code block
@@ -158,11 +180,30 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
+        // setTimeout( () => {
         this.welcomeMessage();
+        //  },900); 
+
     }
 
-    welcomeMessage = () => {
+    welcomeMessage = async () => {
+
+        let url = 'http://localhost:5000/api_dfevent';
+
+
+        axios.post(url).then(response => {
+            console.log('[*********** DF WELCOME EVENT **********]\n', response);
+
+            let welcome = response.data.fulfillmentText;
+            this.setState({ welcomeMessage: welcome || 'Hello Keith! Welcome to myWizard. How can I assist you?' });
+        });
+
+
         setTimeout(() => {
+            // console.log('[VOICE ENABLED]');
+            let input = this.state.welcomeMessage;
+            var utterThis = new SpeechSynthesisUtterance(input);
+            synthTwo.speak(utterThis);
             this.setState({ hmeMounted: true });
         }, 2000)
     }
@@ -182,9 +223,8 @@ class Chatbot extends Component {
 
 
         if (this.state.hmeMounted) {
-            heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
-            //   this.voiceOutput(this.state.welcomeMessage);
 
+            heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
         }
         return (
 
@@ -194,12 +234,11 @@ class Chatbot extends Component {
                     {this.renderMessages(this.state.messages)}
 
                     <InputBox
-
                         click={this.speechHandle}
+                        clickTwo={this.sendButtonHandler}
                         transcript={this.state.finalTranscript}
                         change={this.keyStrokeHandler || this.transcriptHandler}
                         onkeypress={this.handleInputkey}
-
                     />
 
                 </div>
@@ -207,8 +246,6 @@ class Chatbot extends Component {
         )
     }
 }//end chatbot
-
-
 
 const styles = {
     cbcontainer: {
