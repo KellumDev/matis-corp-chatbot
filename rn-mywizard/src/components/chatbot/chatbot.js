@@ -32,7 +32,7 @@ class Chatbot extends Component {
         SingleBotmessage: '',
         welcomeMessage: '',
         hmeMounted: false,
-        defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?',
+        defaultWelcomeMessage: 'Hello Keith! Welcome to myWizard. How can I assist you?',
         mic: [
             { on: 'fas fa-microphone' },
             { off: 'fas fa-microphone-slash' }
@@ -160,9 +160,9 @@ class Chatbot extends Component {
 
         } else if (listen) {
 
-            console.log('[STOP]')
+          //  console.log('[STOP]')
             reconition.stop();
-            synth.cancel();
+            synth.cancel(); 
             this.setState({ listening: false });
 
         }
@@ -237,11 +237,12 @@ class Chatbot extends Component {
         let on = this.state.mic[0].on;
         switch (listen) {
             case false:
-                    console.log('[off]');
+                console.log('[ mic off]');
                 return off
                
             case true:
-                console.log('[on] \n', on);
+                
+                console.log('[ mic on]');
                 return on 
                  
             default:
