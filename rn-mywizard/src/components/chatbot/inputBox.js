@@ -14,8 +14,8 @@ const InputBox = (props) => {
                             onKeyPress={props.onkeypress}
                         />
                         <div className="row valign-wrapper">
-                            <button style={styles.buttonTwo} className="btn waves-effect waves-light" onClick={props.clickTwo} name="mantis"><i className="mic"> </i> Send </button>
-                            <button style={styles.buttonOne} className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className="mic"> </i> Voice </button>
+                            <button style={styles.buttonTwo} className="btn waves-effect waves-light" onClick={props.clickTwo} name="mantis">Send <i className="fas fa-paper-plane"></i></button>
+                            <button style={styles.buttonOne} className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className={props.micOnOff}></i></button>
                         </div>
 
                     </div>

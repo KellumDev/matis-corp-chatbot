@@ -6,7 +6,7 @@ import SingleBotmessage from './SingleBotMessage'
 
 import InputBox from './inputBox';
 
-const SpeechRecognition = window.webkitSpeechRecognition
+const SpeechRecognition = window.webkitSpeechRecognition;
 const reconition = new SpeechRecognition()
 
 //------------------------SPEECH SYNTHESIS----------------------------- 
@@ -16,6 +16,7 @@ const reconition = new SpeechRecognition()
  * $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json"
  ####    set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\austin.kellum\Documents\matis-corp-chatbot\Developmens\config\mywiz_new_agent.json"
  */
+
 const synth = window.speechSynthesis;
 const synthTwo = window.speechSynthesis;
 
@@ -31,7 +32,11 @@ class Chatbot extends Component {
         SingleBotmessage: '',
         welcomeMessage: '',
         hmeMounted: false,
-        defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?'
+        defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?',
+        mic: [
+            { on: 'fas fa-microphone' },
+            { off: 'fas fa-microphone-slash' }
+        ],
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5000/api_dftext';
@@ -180,6 +185,7 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
+
         // setTimeout( () => {
         this.welcomeMessage();
         //  },900); 
@@ -195,7 +201,13 @@ class Chatbot extends Component {
             console.log('[*********** DF WELCOME EVENT **********]\n', response);
 
             let welcome = response.data.fulfillmentText;
-            this.setState({ welcomeMessage: welcome || 'Hello Keith! Welcome to myWizard. How can I assist you?' });
+            this.setState({ welcomeMessage: welcome });
+        }).catch((err) => {
+
+            console.log('[ERROR******] \n', err);
+            //  this.welcomeMessage(); 
+            let defaultWelcomeMessage = this.state.defaultWelcomeMessage;
+            this.setState({ welcomeMessage: defaultWelcomeMessage });
         });
 
 
@@ -205,6 +217,7 @@ class Chatbot extends Component {
             var utterThis = new SpeechSynthesisUtterance(input);
             synthTwo.speak(utterThis);
             this.setState({ hmeMounted: true });
+
         }, 2000)
     }
 
@@ -218,6 +231,25 @@ class Chatbot extends Component {
         }
     }
 
+    microphoneHandler = () => {
+        let listen = this.state.listening;
+        let off = this.state.mic[1].off;
+        let on = this.state.mic[0].on;
+        switch (listen) {
+            case false:
+                    console.log('[off]');
+                return off
+               
+            case true:
+                console.log('[on] \n', on);
+                return on 
+                 
+            default:
+                return off; 
+                
+        }
+    }
+
     render() {
         let heyMywizardWelcom = "";
 
@@ -225,6 +257,7 @@ class Chatbot extends Component {
         if (this.state.hmeMounted) {
 
             heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
+
         }
         return (
 
@@ -239,6 +272,7 @@ class Chatbot extends Component {
                         transcript={this.state.finalTranscript}
                         change={this.keyStrokeHandler || this.transcriptHandler}
                         onkeypress={this.handleInputkey}
+                        micOnOff={this.microphoneHandler()}
                     />
 
                 </div>
