@@ -34,11 +34,6 @@ const styles = {
         position: 'relative',
         top: '225px',    
     },
-<<<<<<< Updated upstream
-    buttonBar: {
-        position: 'relative',
-        right: '43%' 
-=======
     buttonTwo: {
         marginLeft: '1.5%'
     },
@@ -46,7 +41,6 @@ const styles = {
         marginLeft: '1%'
         // position: 'relative',
         //  right: '43%'
->>>>>>> Stashed changes
     }
 }
 
