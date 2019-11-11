@@ -22,6 +22,7 @@ const styles = {
         color: 'black',
         fontWeight: 'bold',
         fontSize: 20,
+        margin: '20px'
       // backgroundImage: src={require('./images/abstract-access.jpg’')},
         // backgroundSize: 'cover',
         // backgroundPosition: 'center',

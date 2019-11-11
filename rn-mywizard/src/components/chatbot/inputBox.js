@@ -8,7 +8,9 @@ const InputBox = (props) => {
                 <div className="card indigo">
                     <div className="card-content white-text">
 
-                        <input className="textinput" type="text" minLength="4" maxLength="150"
+                        <input style={styles.inputBox}  className="textinput" 
+                            type="text" minLength="4" 
+                            maxLength="150" placeholder="Type new message here"
                             value={props.transcript}
                             onChange={props.change}
                             onKeyPress={props.onkeypress}
@@ -29,16 +31,20 @@ const InputBox = (props) => {
 
 }
 const styles = {
+    inputBox: {
+        color: 'white'
+    }, 
     inputContainer: {
         position: 'relative',
+        color: 'white'
         //  top: '225px',    
     },
     buttonTwo: {
-        // position: 'relative',
+        marginLeft: '1.5%'
         //  right: '43%'
     },
     buttonOne: {
-        marginLeft: '5%'
+        marginLeft: '1%'
         // position: 'relative',
         //  right: '43%'
     }

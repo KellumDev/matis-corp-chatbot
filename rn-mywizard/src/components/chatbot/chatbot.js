@@ -186,9 +186,9 @@ class Chatbot extends Component {
 
     componentDidMount = () => {
 
-        // setTimeout( () => {
-        this.welcomeMessage();
-        //  },900); 
+        
+        //this.welcomeMessage();
+      
 
     }
 
