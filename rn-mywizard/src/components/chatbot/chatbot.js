@@ -166,7 +166,11 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
-        this.welcomeMessage();
+
+         
+     //   this.welcomeMessage();
+      
+
     }
    
     welcomeMessage = () => {

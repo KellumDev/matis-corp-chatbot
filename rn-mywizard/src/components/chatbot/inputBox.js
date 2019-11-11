@@ -8,7 +8,12 @@ const InputBox = (props) => {
                 <div className="card indigo">
                     <div className="card-content white-text">
 
-                        <input className="textinput" type="text"  minlength="4" maxlength="48"  
+                        <input style={styles.inputContainer}  
+                            className="textinput" type="text" 
+                            minLength="4" 
+                            maxLength="150" 
+                            placeholder="Type a new message here"
+                            
                             value={props.transcript}
                             onChange={props.change}
                             onKeyPress={props.onkeypress}
@@ -29,9 +34,19 @@ const styles = {
         position: 'relative',
         top: '225px',    
     },
+<<<<<<< Updated upstream
     buttonBar: {
         position: 'relative',
         right: '43%' 
+=======
+    buttonTwo: {
+        marginLeft: '1.5%'
+    },
+    buttonOne: {
+        marginLeft: '1%'
+        // position: 'relative',
+        //  right: '43%'
+>>>>>>> Stashed changes
     }
 }
 
