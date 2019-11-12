@@ -1,27 +1,21 @@
 import React from 'react';
-import Chatbot from '../chatbot/chatbot';
-// import Input from '../chatbot/inputBox'; 
-// import TestTextToSpeech from '../textToSpeech/testTextToSpeech'; 
-// import RnSpeechKit from '../textToSpeech/rnSpeechKit';
-// import Speech from '../textToSpeech/Speech'; 
+import Chatbot from '../chatbot/chatbot'; 
+
+import Logo from '../banner/banner'; 
+
 const Landing = () => {
     return (
         
         <div className="Landing-Page" style={styles.background} >
-              
-            <h1>Hey myWizard!</h1>
-            
+           
+             <Logo />
             <Chatbot />
         </div>
     )
-}
-//url(${img})
-//const img = '../../images/mywizardbk.jpg'; 
+} 
 const styles = {
     background: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 20,
+      
         margin: '20px', 
 
       // backgroundImage: src={require('./images/abstract-access.jpg’')},
