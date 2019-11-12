@@ -15,15 +15,7 @@ const Landing = () => {
 } 
 const styles = {
     background: {
-      
-        margin: '20px', 
-
-      // backgroundImage: src={require('./images/abstract-access.jpg’')},
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center',
-        
-       // backgroundColor: 'red',
-        
+        margin: '5%', 
     }
 };
 
