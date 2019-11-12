@@ -19,10 +19,11 @@ const Landing = () => {
 //const img = '../../images/mywizardbk.jpg'; 
 const styles = {
     background: {
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         fontSize: 20,
-        margin: '20px'
+        margin: '20px', 
+
       // backgroundImage: src={require('./images/abstract-access.jpg’')},
         // backgroundSize: 'cover',
         // backgroundPosition: 'center',
