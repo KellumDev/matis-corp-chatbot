@@ -3,7 +3,7 @@ import React from 'react';
  const ShowDetail = () => {
   return (
     <div style={styles.loaderImage} className="loader center">
-      <i className="fa fa-cog fa-spin" />
+      <i className="fas fa-spinner fa-pulse" />
     </div>
   );
 }

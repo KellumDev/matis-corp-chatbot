@@ -5,7 +5,7 @@ import Message from './message';
 import SingleBotmessage from './SingleBotMessage'
 
 import InputBox from './inputBox';
-import Loader from '../loader/loader'; 
+import Loader from '../loader/loader';
 
 const SpeechRecognition = window.webkitSpeechRecognition;
 const reconition = new SpeechRecognition()
@@ -33,7 +33,7 @@ class Chatbot extends Component {
         SingleBotmessage: '',
         welcomeMessage: '',
         defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?',
-        loading: false,  
+        loading: true,
         mic: [
             { on: 'fas fa-microphone' },
             { off: 'fas fa-microphone-slash' }
@@ -186,13 +186,11 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
-
-        
-        //this.welcomeMessage();
-      setTimeout( ()=> {
-
-      }, 2000)
-
+ 
+        setTimeout(() => {
+            
+            this.welcomeMessage();
+        }, 3000)
     }
 
     welcomeMessage = async () => {
@@ -204,7 +202,12 @@ class Chatbot extends Component {
             console.log('[*********** DF WELCOME EVENT **********]\n', response);
 
             let welcome = response.data.fulfillmentText;
+            this.setState({ loading: false });
             this.setState({ welcomeMessage: welcome });
+            let input = this.state.welcomeMessage;
+            var utterThis = new SpeechSynthesisUtterance(input);
+            synthTwo.speak(utterThis);
+
         }).catch((err) => {
 
             console.log('[ERROR******] \n', err);
@@ -240,37 +243,31 @@ class Chatbot extends Component {
         let on = this.state.mic[0].on;
         switch (listen) {
             case false:
-                    console.log('[off]');
+                console.log('[off]');
                 return off
-               
+
             case true:
                 console.log('[on] \n', on);
-                return on 
-                 
+                return on
+
             default:
-                return off; 
-                
+                return off;
+
         }
     }
 
-     
+
 
     render() {
         let heyMywizardWelcom = "";
         let loader = ""
 
-        if (this.state.loading)  
-        {
-            loader = <Loader/>; 
-         
-        }  else
+        if (this.state.loading) {
+            loader = <Loader />;
+        } else {
+            heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
+        }
 
-        {
-             
-         heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
-
-        }  
-         
         return (
 
             <div style={styles.cbcontainer}>

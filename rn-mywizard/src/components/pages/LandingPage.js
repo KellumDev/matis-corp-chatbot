@@ -8,7 +8,6 @@ const Landing = () => {
         
         <div className="Landing-Page" style={styles.background} >
             
-             <Loader/>
              <Logo />
             <Chatbot />
         </div>
