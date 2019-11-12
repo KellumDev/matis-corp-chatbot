@@ -1,6 +1,6 @@
 import React from 'react';
 import Chatbot from '../chatbot/chatbot'; 
-import Loader from '../loader/loader'; 
+//import Loader from '../loader/loader'; 
 import Logo from '../banner/banner'; 
 
 const Landing = () => {
