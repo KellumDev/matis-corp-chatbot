@@ -5,6 +5,7 @@ import Message from './message';
 import SingleBotmessage from './SingleBotMessage'
 
 import InputBox from './inputBox';
+import Loader from '../loader/loader'; 
 
 const SpeechRecognition = window.webkitSpeechRecognition;
 const reconition = new SpeechRecognition()
@@ -31,8 +32,8 @@ class Chatbot extends Component {
         messages: [],
         SingleBotmessage: '',
         welcomeMessage: '',
-        hmeMounted: false,
         defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?',
+        loading: false,  
         mic: [
             { on: 'fas fa-microphone' },
             { off: 'fas fa-microphone-slash' }
@@ -188,7 +189,9 @@ class Chatbot extends Component {
 
         
         //this.welcomeMessage();
-      
+      setTimeout( ()=> {
+
+      }, 2000)
 
     }
 
@@ -211,14 +214,14 @@ class Chatbot extends Component {
         });
 
 
-        setTimeout(() => {
-            // console.log('[VOICE ENABLED]');
-            let input = this.state.welcomeMessage;
-            var utterThis = new SpeechSynthesisUtterance(input);
-            synthTwo.speak(utterThis);
-            this.setState({ hmeMounted: true });
+        // setTimeout(() => {
+        //     // console.log('[VOICE ENABLED]');
+        //     let input = this.state.welcomeMessage;
+        //     var utterThis = new SpeechSynthesisUtterance(input);
+        //     synthTwo.speak(utterThis);
+        //     this.setState({ loading: true });
 
-        }, 2000)
+        // }, 2000)
     }
 
     renderMessages = (returnedMessages) => {
@@ -250,19 +253,29 @@ class Chatbot extends Component {
         }
     }
 
+     
+
     render() {
         let heyMywizardWelcom = "";
+        let loader = ""
 
+        if (this.state.loading)  
+        {
+            loader = <Loader/>; 
+         
+        }  else
 
-        if (this.state.hmeMounted) {
+        {
+             
+         heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
 
-            heyMywizardWelcom = <SingleBotmessage id={"welc-message"} speaks={'bot'} text={this.state.welcomeMessage} />;
-
-        }
+        }  
+         
         return (
 
             <div style={styles.cbcontainer}>
                 <div id="chatbot" style={{ height: '550px', width: '100%', overflow: 'auto' }}>
+                    {loader}
                     {heyMywizardWelcom}
                     {this.renderMessages(this.state.messages)}
 
