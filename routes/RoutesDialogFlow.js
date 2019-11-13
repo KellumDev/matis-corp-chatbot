@@ -59,9 +59,7 @@ router.post('/api_dftext', urlencodedParser,async (req, res) => {
 }); //end text
 
 router.post('/api_dfevent', urlencodedParser,async (req, res) => {
-    //const input = req.body.text; 
-    // res.send("Welcome bruh, take a look around and you will see!");
-    // console.log(input);
+   
 
     let events = 'welcome'; 
 
