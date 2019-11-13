@@ -215,16 +215,7 @@ class Chatbot extends Component {
             let defaultWelcomeMessage = this.state.defaultWelcomeMessage;
             this.setState({ welcomeMessage: defaultWelcomeMessage });
         });
-
-
-        // setTimeout(() => {
-        //     // console.log('[VOICE ENABLED]');
-        //     let input = this.state.welcomeMessage;
-        //     var utterThis = new SpeechSynthesisUtterance(input);
-        //     synthTwo.speak(utterThis);
-        //     this.setState({ loading: true });
-
-        // }, 2000)
+ 
     }
 
     renderMessages = (returnedMessages) => {
