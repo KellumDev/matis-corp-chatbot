@@ -38,6 +38,7 @@ class Chatbot extends Component {
             { on: 'fas fa-microphone' },
             { off: 'fas fa-microphone-slash' }
         ],
+
     }
     textQueryWrapper = async (text) => {
         let url = 'http://localhost:5150/api_dftext';
@@ -88,42 +89,39 @@ class Chatbot extends Component {
         //set the transcript with keystrokes
         let a = e.target.value
         this.setState({ finalTranscript: a })
+
         let finalTranscript = this.state.finalTranscript;
         //if the voice button was clicked then voice output should be used 
-        let expression = this.state.listening;
+        let listening = this.state.listening;
+        // send button was clicked ;
+        let sendButtonBoolean = this.state.sendButtonBool;
 
-        switch (expression) {
-            case false:
+        if (!listening) {
 
-                if (e.key === 'Enter') {
-                    this.textQueryWrapper(finalTranscript);
-                    this.clearInputHandler();
-                }
-                //   this.speechhandler(this.state.ttFinalTranscript);
-                console.log('[ SPEECH IS OFF ]');
-                break;
+            if (e.key === 'Enter') {
+                this.textQueryWrapper(finalTranscript);
+                this.clearInputHandler();
+            }
 
-            case true:
-
-                console.log('[ SPEECH IS ON ]');
-                this.speechHandle();
-                if (e.key === 'Enter') {
-                    this.textQueryWrapper(finalTranscript);
-                    this.clearInputHandler();
-                    setTimeout(() => {
-
-                        let messages = [...this.state.messages],
-                            botmessage = messages.slice(-1)[0].msg.text.text[0];
-
-                        console.log('[ VOICE  RESPONSE ] \n', botmessage);
-                        this.voiceOutput(botmessage);
-                    }, 3000);
-                }
-
-                break;
-            default:
-            // code block
         }
+        else if (listening) {
+            if (e.key === 'Enter') {
+                this.textQueryWrapper(finalTranscript);
+                this.clearInputHandler();
+
+                setTimeout(() => {
+                    //get the last message from the array of messages , last message is the bot 
+                    let messages = [...this.state.messages],
+                        botmessage = messages.slice(-1)[0].msg.text.text[0];
+
+                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
+                    this.voiceOutput(botmessage);
+                }, 3000);
+
+            }
+
+        }
+
     }
 
     speechHandle = async () => {
@@ -186,9 +184,9 @@ class Chatbot extends Component {
     }
 
     componentDidMount = () => {
- 
+
         setTimeout(() => {
-            
+
             this.welcomeMessage();
         }, 3000)
     }
@@ -215,7 +213,7 @@ class Chatbot extends Component {
             let defaultWelcomeMessage = this.state.defaultWelcomeMessage;
             this.setState({ welcomeMessage: defaultWelcomeMessage });
         });
- 
+
     }
 
     renderMessages = (returnedMessages) => {
@@ -234,10 +232,13 @@ class Chatbot extends Component {
         let on = this.state.mic[0].on;
         switch (listen) {
             case false:
+
+                //this.setState({listening: false});
                 console.log('[off]');
                 return off
-
+            //
             case true:
+                // this.speechHandle() ;
                 console.log('[on] \n', on);
                 return on
 
@@ -246,8 +247,6 @@ class Chatbot extends Component {
 
         }
     }
-
-
 
     render() {
 
