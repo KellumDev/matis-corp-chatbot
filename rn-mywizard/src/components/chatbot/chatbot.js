@@ -81,8 +81,28 @@ class Chatbot extends Component {
 
         let finalTranscript = this.state.finalTranscript;
 
-        this.textQueryWrapper(finalTranscript);
-        this.clearInputHandler();
+        let listening = this.state.listening; 
+         
+        if (!listening) {
+
+            this.textQueryWrapper(finalTranscript);
+            this.clearInputHandler();
+
+        }
+        else if (listening) {
+            
+                this.textQueryWrapper(finalTranscript);
+                this.clearInputHandler();
+
+                setTimeout(() => {
+                    //get the last message from the array of messages , last message is the bot 
+                    let messages = [...this.state.messages],
+                        botmessage = messages.slice(-1)[0].msg.text.text[0];
+
+                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
+                    this.voiceOutput(botmessage);
+                }, 2000);
+        }
     }
 
     handleInputkey = async (e) => {
@@ -116,7 +136,7 @@ class Chatbot extends Component {
 
                     console.log('[ VOICE  RESPONSE ] \n', botmessage);
                     this.voiceOutput(botmessage);
-                }, 3000);
+                }, 2000);
 
             }
 
