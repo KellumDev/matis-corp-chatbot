@@ -30,7 +30,7 @@ class Chatbot extends Component {
         listening: false,
         finalTranscript: "",
         messages: [],
-        SingleBotmessage: '',
+        BotResponse: '',
         welcomeMessage: '',
         defaultWelcomeMessage: 'Hello! Welcome to myWizard. How can I assist you?',
         loading: true,
@@ -62,7 +62,7 @@ class Chatbot extends Component {
                     msg: msg
                 }
                 this.setState({ messages: [...this.state.messages, says] });
-                this.setState({ SingleBotmessage: msg });
+                this.setState({ BotResponse: msg.text.text[0] });
             }
             console.log(['*********CLIENT STRUCTURE**********\n'], response);
         }
@@ -92,25 +92,23 @@ class Chatbot extends Component {
         }
         else if (listening) {
             try {
-               
+
                 let friday = await this.textQueryWrapper(finalTranscript);
                 let nextFriday = await this.clearInputHandler();
-                let fridayAfterNext = await this.BotResponse();
-                console.log('[ VOICE  RESPONSE from send button click  ]');
+                let fridayAfterNext = await this.BotTalkBack();
             } catch (error) {
                 console.log('[********VOICE RESPONSE ERROR*******]\n', error)
             }
-  
+
         }
     }
 
-     BotResponse = async () => {
-         
-            let messages = await [...this.state.messages]; 
-            let botmessage = await messages.slice(-1)[0].msg.text.text[0];
-            
-        console.log('[ VOICE  RESPONSE  ] \n', botmessage);
-        let voice = await this.voiceOutput(botmessage) ; 
+    BotTalkBack = async () => {
+
+        setTimeout(() => {
+            let a = this.state.BotResponse;
+            this.voiceOutput(a);
+        }, 950)
     }
 
     handleInputkey = async (e) => {
