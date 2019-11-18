@@ -68,21 +68,22 @@ class Chatbot extends Component {
         }
 
         );
-
+        return;
     }//end textQueryWrapper
 
     clearInputHandler = () => {
 
         let a = "";
         this.setState({ finalTranscript: a });
+        return;
     }
 
-    sendButtonHandler = () => {
+    sendButtonHandler = async () => {
 
         let finalTranscript = this.state.finalTranscript;
 
-        let listening = this.state.listening; 
-         
+        let listening = this.state.listening;
+
         if (!listening) {
 
             this.textQueryWrapper(finalTranscript);
@@ -90,19 +91,26 @@ class Chatbot extends Component {
 
         }
         else if (listening) {
-            
-                this.textQueryWrapper(finalTranscript);
-                this.clearInputHandler();
-
-                setTimeout(() => {
-                    //get the last message from the array of messages , last message is the bot 
-                    let messages = [...this.state.messages],
-                        botmessage = messages.slice(-1)[0].msg.text.text[0];
-
-                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
-                    this.voiceOutput(botmessage);
-                }, 2000);
+            try {
+               
+                let friday = await this.textQueryWrapper(finalTranscript);
+                let nextFriday = await this.clearInputHandler();
+                let fridayAfterNext = await this.BotResponse();
+                console.log('[ VOICE  RESPONSE from send button click  ]');
+            } catch (error) {
+                console.log('[********VOICE RESPONSE ERROR*******]\n', error)
+            }
+  
         }
+    }
+
+     BotResponse = async () => {
+         
+            let messages = await [...this.state.messages]; 
+            let botmessage = await messages.slice(-1)[0].msg.text.text[0];
+            
+        console.log('[ VOICE  RESPONSE  ] \n', botmessage);
+        let voice = await this.voiceOutput(botmessage) ; 
     }
 
     handleInputkey = async (e) => {
@@ -192,6 +200,7 @@ class Chatbot extends Component {
         console.log('[VOICE ENABLED]');
         var utterThis = new SpeechSynthesisUtterance(input);
         synth.speak(utterThis);
+        return;
     }
 
     transcriptHandler = () => {
