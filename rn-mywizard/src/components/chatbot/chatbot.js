@@ -132,17 +132,15 @@ class Chatbot extends Component {
         }
         else if (listening) {
             if (e.key === 'Enter') {
-                this.textQueryWrapper(finalTranscript);
-                this.clearInputHandler();
+                try {
 
-                setTimeout(() => {
-                    //get the last message from the array of messages , last message is the bot 
-                    let messages = [...this.state.messages],
-                        botmessage = messages.slice(-1)[0].msg.text.text[0];
-
-                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
-                    this.voiceOutput(botmessage);
-                }, 2000);
+                    let friday = await this.textQueryWrapper(finalTranscript);
+                    let nextFriday = await this.clearInputHandler();
+                    let fridayAfterNext = await this.BotTalkBack();
+                 
+                } catch (error) {
+                    console.log('[********VOICE RESPONSE ERROR*******]\n', error)
+                }
 
             }
 
