@@ -12,10 +12,10 @@ const Landing = () => {
             <Chatbot />
         </div>
     )
-} 
+}  
 const styles = {
     background: {
-        margin: '5%', 
+        margin: '5%'
     }
 };
 

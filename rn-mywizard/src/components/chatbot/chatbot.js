@@ -7,6 +7,8 @@ import SingleBotmessage from './SingleBotMessage'
 import InputBox from './inputBox';
 import Loader from '../loader/loader';
 
+import '../../css/chatbotStyle.css';
+
 const SpeechRecognition = window.webkitSpeechRecognition;
 const reconition = new SpeechRecognition()
 
@@ -320,7 +322,10 @@ const styles = {
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
-        borderTopRightRadius: '10px'
+        borderTopRightRadius: '10px',
+        WebkitScrollbarTrack: 'red',
+        WebkitScrollBar: 'blue',
+        WebkitScrollbarThumb: 'green'
     },
     message: {
         clear: 'both',
