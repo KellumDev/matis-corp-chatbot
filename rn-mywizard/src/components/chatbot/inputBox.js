@@ -35,18 +35,14 @@ const styles = {
         color: 'white'
     }, 
     inputContainer: {
-        position: 'relative',
-        color: 'white'
-        //  top: '225px',    
+        width: '72%',
+        color: 'white',   
     },
     buttonTwo: {
         marginLeft: '1.5%'
-        //  right: '43%'
     },
     buttonOne: {
         marginLeft: '1%'
-        // position: 'relative',
-        //  right: '43%'
     }
 }
 

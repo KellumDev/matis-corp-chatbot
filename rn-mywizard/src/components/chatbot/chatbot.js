@@ -139,7 +139,7 @@ class Chatbot extends Component {
                     let friday = await this.textQueryWrapper(finalTranscript);
                     let nextFriday = await this.clearInputHandler();
                     let fridayAfterNext = await this.BotTalkBack();
-                 
+
                 } catch (error) {
                     console.log('[********VOICE RESPONSE ERROR*******]\n', error)
                 }
@@ -223,7 +223,7 @@ class Chatbot extends Component {
         let url = 'http://localhost:5150/api_dfevent';
 
 
-        axios.post(url).then( response => {
+        axios.post(url).then(response => {
             console.log('[*********** DF WELCOME EVENT **********]\n', response);
 
             let welcome = response.data.fulfillmentText;
@@ -287,29 +287,37 @@ class Chatbot extends Component {
         }
 
         return (
+            <div >
 
-            <div style={styles.cbcontainer}>
-                <div id="chatbot" style={{ height: '550px', width: '100%', overflow: 'auto' }}>
-                    {loader}
-                    {heyMywizardWelcom}
-                    {this.renderMessages(this.state.messages)}
+                <div style={styles.cbcontainer}>
+                    <div id="chatbot" style={styles.messagesContainer}>
+                        {loader}
+                        {heyMywizardWelcom}
+                        {this.renderMessages(this.state.messages)}
 
-                    <InputBox
-                        click={this.speechHandle}
-                        clickTwo={this.sendButtonHandler}
-                        transcript={this.state.finalTranscript}
-                        change={this.keyStrokeHandler || this.transcriptHandler}
-                        onkeypress={this.handleInputkey}
-                        micOnOff={this.microphoneHandler()}
-                    />
-
+                    </div>
                 </div>
+                <InputBox
+                    click={this.speechHandle}
+                    clickTwo={this.sendButtonHandler}
+                    transcript={this.state.finalTranscript}
+                    change={this.keyStrokeHandler || this.transcriptHandler}
+                    onkeypress={this.handleInputkey}
+                    micOnOff={this.microphoneHandler()}
+                />
             </div>
+
         )
     }
 }//end chatbot
 
 const styles = {
+    messagesContainer: {
+        height: '550px',
+        width: '100%',
+        overflow: 'auto', 
+        padding: '1%'
+    },
     cbcontainer: {
         backgroundColor: '#1a237e',
         height: '60%',
