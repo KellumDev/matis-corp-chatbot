@@ -13,7 +13,7 @@ const styles = {
        zoom: 4
     },
     spinner: {
-        color: 'white'
+        color: '#97ca3d'
     }
 };
 
