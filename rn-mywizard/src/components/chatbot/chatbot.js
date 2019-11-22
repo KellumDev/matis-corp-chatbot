@@ -306,7 +306,8 @@ class Chatbot extends Component {
                         {loader}
                         {heyMywizardWelcom}
                         {this.renderMessages(this.state.messages)}
-
+                        <div ref={ (el)=> {this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
+                            </div>
                     </div>
                 </div>
                 <InputBox
