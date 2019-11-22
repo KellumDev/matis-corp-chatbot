@@ -218,6 +218,11 @@ class Chatbot extends Component {
         }, 3000)
     }
 
+    componentDidUpdate= () => {
+
+       this.scrollHandler(); 
+    }
+
     welcomeMessage = async () => {
 
         let url = 'http://localhost:5150/api_dfevent';
@@ -253,6 +258,12 @@ class Chatbot extends Component {
         }
     }
 
+    scrollHandler = () => {
+        this.messagesEnd.scrollIntoView({
+            behavior: 'smooth'
+          });
+    }
+
     microphoneHandler = () => {
         let listen = this.state.listening;
         let off = this.state.mic[1].off;
@@ -278,7 +289,8 @@ class Chatbot extends Component {
     render() {
 
         let heyMywizardWelcom = "";
-        let loader = ""
+        let loader = ""; 
+          
 
         if (this.state.loading) {
             loader = <Loader />;
@@ -294,7 +306,8 @@ class Chatbot extends Component {
                         {loader}
                         {heyMywizardWelcom}
                         {this.renderMessages(this.state.messages)}
-
+                        <div ref={ (el)=> {this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
+                            </div>
                     </div>
                 </div>
                 <InputBox
@@ -322,6 +335,7 @@ const styles = {
         backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
+       // borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',
         paddingLeft: '3%',
@@ -329,7 +343,7 @@ const styles = {
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
-        borderTopRightRadius: '10px',
+        borderTopRightRadius: '10px'
     },
     message: {
         clear: 'both',
