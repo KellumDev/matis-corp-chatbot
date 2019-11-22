@@ -35,7 +35,7 @@ const styles = {
         color: 'white'
     }, 
     inputContainer: {
-        width: '72%',
+        width: '100%',
         color: 'white',   
     },
     buttonTwo: {
