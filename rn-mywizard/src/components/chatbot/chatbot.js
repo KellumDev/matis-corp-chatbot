@@ -287,9 +287,9 @@ class Chatbot extends Component {
         }
 
         return (
-            <div >
+            <div style={styles.cbcontainer} >
 
-                <div style={styles.cbcontainer}>
+                <div >
                     <div id="chatbot" style={styles.messagesContainer}>
                         {loader}
                         {heyMywizardWelcom}
@@ -322,7 +322,6 @@ const styles = {
         backgroundColor: '#1a237e',
         height: '60%',
         width: '70%',
-        borderColor: 'black',
         border: 'solid 5px #97ca3d',
         padding: '2%',
         paddingLeft: '3%',
@@ -331,9 +330,6 @@ const styles = {
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
         borderTopRightRadius: '10px',
-        WebkitScrollbarTrack: 'red',
-        WebkitScrollBar: 'blue',
-        WebkitScrollbarThumb: 'green'
     },
     message: {
         clear: 'both',
