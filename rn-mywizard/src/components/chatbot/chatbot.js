@@ -218,6 +218,11 @@ class Chatbot extends Component {
         }, 3000)
     }
 
+    componentDidUpdate= () => {
+
+       this.scrollHandler(); 
+    }
+
     welcomeMessage = async () => {
 
         let url = 'http://localhost:5150/api_dfevent';
@@ -253,10 +258,9 @@ class Chatbot extends Component {
         }
     }
 
-    scrollHandler = key => {
-        ref[key].current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+    scrollHandler = () => {
+        this.messagesEnd.scrollIntoView({
+            behavior: 'smooth'
           });
     }
 
