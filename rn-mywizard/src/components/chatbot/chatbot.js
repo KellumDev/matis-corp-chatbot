@@ -43,7 +43,7 @@ class Chatbot extends Component {
 
     }
     textQueryWrapper = async (text) => {
-        let url = 'http://localhost:5150/api_dftext';
+        let url = 'http://35.223.93.13:443/api_dftext';
         let myConversation = {
             speaks: 'user',
             msg: {
@@ -222,7 +222,7 @@ class Chatbot extends Component {
 
     welcomeMessage = async () => {
 
-        let url = 'http://localhost:5150/api_dfevent';
+        let url = 'http://35.223.93.13:443/api_dfevent';
 
 
         axios.post(url).then(response => {
