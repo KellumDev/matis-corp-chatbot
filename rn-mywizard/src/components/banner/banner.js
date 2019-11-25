@@ -17,7 +17,7 @@ const styles = {
         margin: '2%'
      },
     logo: {
-       width: '95%'
+       width: '55%'
     }
 };
 

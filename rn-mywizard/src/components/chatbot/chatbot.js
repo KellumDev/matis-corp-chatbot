@@ -80,12 +80,12 @@ class Chatbot extends Component {
         return;
     }
 
-    sendButtonHandler = async () => {
+    sendButtonHandler = () => {
 
         let finalTranscript = this.state.finalTranscript;
 
-        let listening = this.state.listening;
-
+        let listening = this.state.listening; 
+         
         if (!listening) {
 
             this.textQueryWrapper(finalTranscript);
@@ -93,24 +93,19 @@ class Chatbot extends Component {
 
         }
         else if (listening) {
-            try {
+            
+                this.textQueryWrapper(finalTranscript);
+                this.clearInputHandler();
 
-                let friday = await this.textQueryWrapper(finalTranscript);
-                let nextFriday = await this.clearInputHandler();
-                let fridayAfterNext = await this.BotTalkBack();
-            } catch (error) {
-                console.log('[********VOICE RESPONSE ERROR*******]\n', error)
-            }
+                setTimeout(() => {
+                    //get the last message from the array of messages , last message is the bot 
+                    let messages = [...this.state.messages],
+                        botmessage = messages.slice(-1)[0].msg.text.text[0];
 
+                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
+                    this.voiceOutput(botmessage);
+                }, 4700);
         }
-    }
-
-    BotTalkBack = async () => {
-
-        setTimeout(() => {
-            let a = this.state.BotResponse;
-            this.voiceOutput(a);
-        }, 950)
     }
 
     handleInputkey = async (e) => {
@@ -134,15 +129,17 @@ class Chatbot extends Component {
         }
         else if (listening) {
             if (e.key === 'Enter') {
-                try {
+                this.textQueryWrapper(finalTranscript);
+                this.clearInputHandler();
 
-                    let friday = await this.textQueryWrapper(finalTranscript);
-                    let nextFriday = await this.clearInputHandler();
-                    let fridayAfterNext = await this.BotTalkBack();
+                setTimeout(() => {
+                    //get the last message from the array of messages , last message is the bot 
+                    let messages = [...this.state.messages],
+                        botmessage = messages.slice(-1)[0].msg.text.text[0];
 
-                } catch (error) {
-                    console.log('[********VOICE RESPONSE ERROR*******]\n', error)
-                }
+                    console.log('[ VOICE  RESPONSE ] \n', botmessage);
+                    this.voiceOutput(botmessage);
+                }, 4700);
 
             }
 
