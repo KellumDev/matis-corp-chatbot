@@ -8,6 +8,7 @@ import InputBox from './inputBox';
 import Loader from '../loader/loader';
 
 import '../../css/chatbotStyle.css';
+import cssGlobal from '../../css/globalStyles'; 
 
 const SpeechRecognition = window.webkitSpeechRecognition;
 const reconition = new SpeechRecognition()
@@ -248,7 +249,7 @@ class Chatbot extends Component {
     renderMessages = (returnedMessages) => {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
-                return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
+                return <Message keys={i} speaks={message.speaks} text={message.msg.text.text} />;
             })
         } else {
             return '[*NO MESSAGES*]';
@@ -329,14 +330,14 @@ const styles = {
         padding: '1%'
     },
     cbcontainer: {
-        backgroundColor: '#1a237e',
-        height: '60%',
-        width: '70%',
+        backgroundColor: 'white',
+        height: '60%', 
+        width: '50%',
        // borderColor: 'black',
-        border: 'solid 5px #97ca3d',
+        border: 'solid 5px #a2c6f6',
         padding: '2%',
         paddingLeft: '3%',
-        marginLeft: '15%',
+        marginLeft: '25%',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',

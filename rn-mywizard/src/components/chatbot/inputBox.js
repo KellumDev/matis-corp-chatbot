@@ -1,30 +1,29 @@
 import React from 'react';
-
+import cssGlobal from '../../css/globalStyles';
 const InputBox = (props) => {
 
     return (
+
+
+
+
         <div id="mw-inputbox" style={styles.inputContainer} className="row">
-            <div className="col  m12">
-                <div className="card indigo">
-                    <div className="card-content white-text">
-
-                        <input style={styles.inputBox}  className="textinput" 
-                            type="text" minLength="4" 
-                            maxLength="150" placeholder="Type new message here"
-                            value={props.transcript}
-                            onChange={props.change}
-                            onKeyPress={props.onkeypress}
-                        />
-                        <div className="row valign-wrapper">
-                            <button style={styles.buttonTwo} className="btn waves-effect waves-light" onClick={props.clickTwo} name="mantis">Send <i className="fas fa-paper-plane"></i></button>
-                            <button style={styles.buttonOne} className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className={props.micOnOff}></i></button>
-                        </div>
-
+            <ul className="collection" style={styles.collection} >
+                <li className="collection-item">
+                    <input className="textinput" style={styles.inputBox}
+                        type="text" minLength="4"
+                        maxLength="150" placeholder="Type new message here"
+                        value={props.transcript}
+                        onChange={props.change}
+                        onKeyPress={props.onkeypress}
+                    />
+                    <div className="row valign-wrapper" style={styles.rowValignWrapper}>
+                        <button style={styles.buttonTwo} className="btn waves-effect waves-light" onClick={props.clickTwo} name="mantis">Send <i className="fas fa-paper-plane"></i></button>
+                        <button style={styles.buttonOne} className="btn waves-effect waves-light" onClick={props.click} name="mantis"><i className={props.micOnOff}></i></button>
                     </div>
-                </div>
+                </li>
+            </ul>
 
-
-            </div>
         </div>
     )
 
@@ -32,17 +31,30 @@ const InputBox = (props) => {
 }
 const styles = {
     inputBox: {
-        color: 'white'
-    }, 
+        color: 'black',
+        borderBottom: cssGlobal.lightGrayBorder,
+        boxShadow: 'none'
+    },
     inputContainer: {
         width: '100%',
-        color: 'white',   
+        height: '50%',
+        color: 'white',
+        marginBottom: '0%',
+        boxShadow: 'red'
+    },
+    collection: {
+        border: 'none'
+    },
+    rowValignWrapper: {
+        marginBottom: '0%'
     },
     buttonTwo: {
-        marginLeft: '1.5%'
+        marginLeft: '1.5%',
+        backgroundColor: cssGlobal.lightBlue
     },
     buttonOne: {
-        marginLeft: '1%'
+        marginLeft: '1%',
+        backgroundColor: cssGlobal.lightBlue
     }
 }
 

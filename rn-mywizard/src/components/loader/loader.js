@@ -1,5 +1,5 @@
 import React from 'react';
-
+import cssGlobal from '../../css/globalStyles';
  const ShowDetail = () => {
   return (
     <div style={styles.loaderImage} className="loader center">
@@ -13,7 +13,7 @@ const styles = {
        zoom: 4
     },
     spinner: {
-        color: '#97ca3d'
+        color: cssGlobal.lightBlue
     }
 };
 

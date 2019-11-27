@@ -14,7 +14,13 @@ const Banner = () => {
 
 const styles = {
     container: {
-        margin: '2%'
+        margin:' 2%,',
+        position:' absolute',
+        top: '1%',
+        float:' left',
+        width:' 30%',
+        left: '0%',
+    
      },
     logo: {
        width: '55%'
