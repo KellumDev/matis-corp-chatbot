@@ -10,6 +10,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const sessionClient = new dialogflow.SessionsClient();
 const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFLowSessionID);
 
+
+const utilities = require('./utilities/utilities');
+
 router.post('/', urlencodedParser, (req, res) => {
     const input = req.body.text; 
     res.send("Welcome bruh, take a look around and you will see!");
@@ -18,14 +21,17 @@ router.post('/', urlencodedParser, (req, res) => {
 
 
 router.post('/api_dftext', urlencodedParser,async (req, res) => {
-   // const responseHandler = response => response;
+
+   // check for "my wizard" and replace it with "mywizard"
+    let result = utilities.regexMyWizard(req.body.text); 
+    
     let request = {
 
         session: sessionPath,
         queryInput: {
             text: {
                 // The query to send to the dialogflow agent
-                text: req.body.text,
+                text: result,
                 // The language used by the client (en-US)
                 languageCode: config.dialogFLowSessionLanguageCode,
             },
