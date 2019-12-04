@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Chatbot from '../chatbot/chatbot';
 //import Loader from '../loader/loader'; 
 import Logo from '../banner/banner';
 
-const Landing = () => {
-    return (
+import { Accordion, Card, Button } from 'react-bootstrap';
 
-        <div className="Landing-Page" style={styles.background} >
+class Landing extends Component {
 
-            <Logo />
+    state = {
+        show: false
+    }
+    handleClose() {
+        this.setState({ show: false });
+    }
 
-            <Chatbot />
-             
-        </div>
-    )
+    handleShow() {
+        this.setState({ show: true });
+    }
+
+
+    render() {
+        return (
+            <div className="Landing-Page" style={styles.background} >
+
+                <Logo />
+
+                <Chatbot />
+
+            </div>
+        )
+    }
+
+
+
 }
 const styles = {
     background: {
