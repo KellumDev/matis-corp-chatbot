@@ -332,12 +332,12 @@ const styles = {
     cbcontainer: {
         backgroundColor: 'white',
         height: '60%', 
-        width: '50%',
+        
        // borderColor: 'black',
         border: 'solid 5px #a2c6f6',
         padding: '2%',
         paddingLeft: '3%',
-        marginLeft: '25%',
+       
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',

@@ -1,31 +1,49 @@
 import React, { Component } from 'react';
 import Chatbot from '../chatbot/chatbot';
 //import Loader from '../loader/loader'; 
+import MwBackground from '../../components/images/myWizardpagerevised.png';
 import Logo from '../banner/banner';
 
-import { Accordion, Card, Button } from 'react-bootstrap';
+
+import { Modal, Button, Row, Col, Image } from 'react-bootstrap';
 
 class Landing extends Component {
 
     state = {
         show: false
     }
-    handleClose() {
+
+    handleClose = () => {
         this.setState({ show: false });
     }
 
-    handleShow() {
+    handleShow = () => {
         this.setState({ show: true });
     }
 
 
     render() {
+
+
+
         return (
             <div className="Landing-Page" style={styles.background} >
-
+                {/* 
                 <Logo />
 
-                <Chatbot />
+                <Chatbot /> */}
+
+                <Row>
+                    <Col  >
+                        <Image className="mw-background" src={MwBackground} style={styles.mwbackground} responsive />
+                        <Button className="chatbot-button"  bsstyle="primary" bsSize="large" onClick={this.handleShow}>
+                                Launch Hey myWizard
+                            </Button>
+                            <Modal show={this.state.show} onHide={this.handleClose}>
+                                <Chatbot />
+                            </Modal>
+                    </Col>
+                </Row>
 
             </div>
         )
@@ -37,6 +55,9 @@ class Landing extends Component {
 const styles = {
     background: {
         margin: '5%'
+    },
+    mwbackground: {
+        maxWidth: '1107px'
     }
 };
 

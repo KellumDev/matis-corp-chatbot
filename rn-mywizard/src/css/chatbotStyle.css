@@ -9,6 +9,10 @@ div#chatbot::-webkit-scrollbar {
   background-color: none;
 }
 
+div.fade.modal.show::-webkit-scrollbar {
+  background-color: white;
+}
+
 div#chatbot::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: none;
@@ -20,18 +24,73 @@ div#chatbot::-webkit-scrollbar-thumb {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(162, 198, 246)), color-stop(0.72, rgb(162, 198, 246)), color-stop(0.86, rgb(162, 198, 246)));
 }
 
-/* input box */
+div.fade.modal.show {
+  margin: 0;
+  display: none;
+  position: fixed;
+  left: 39%;
+  right: 0;
+  top: 23%;
+  background-color: #fafafa;
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  will-change: top, opacity;
+  padding: 0%;
+}
 
-/* 
-@media only screen and (min-width: 425px) {
-    div#mw-inputbox.row{
-    
-    }
-  } 
-  @media only screen and (min-width: 768px) {
-    div#mw-inputbox.row{
-       
-    
-    }
-  }  */
+div.modal-content {
+  background-color: white;
+  border: none;
+  /* padding: 0%;  */
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: none;
+  }
+}
+
+/* chatbot button  */
+
+button.chatbot-button.btn.btn-primary {
+  position: relative;
+  bottom: 27%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  button.chatbot-button.btn.btn-primary {
+    left: 454px;
+  }
+}
  
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  button.chatbot-button.btn.btn-primary {
+    left: 455px;
+  }
+}
+
+@media only screen and (min-width: 377px) and (max-width: 768px) {
+  button.chatbot-button.btn.btn-primary {
+    left: 460px;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width:1024px) {
+  button.chatbot-button.btn.btn-primary {
+    left: 465px;
+  }
+}
+
+@media only screen and (min-width:1025px) and (max-width:1440px){
+  button.chatbot-button.btn.btn-primary {
+    left: 470px;
+  }
+}

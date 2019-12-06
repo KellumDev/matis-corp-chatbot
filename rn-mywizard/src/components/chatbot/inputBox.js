@@ -3,9 +3,7 @@ import cssGlobal from '../../css/globalStyles';
 const InputBox = (props) => {
 
     return (
-
-
-
+ 
 
         <div id="mw-inputbox" style={styles.inputContainer} className="row">
             <ul className="collection" style={styles.collection} >
@@ -43,7 +41,9 @@ const styles = {
         boxShadow: 'red'
     },
     collection: {
-        border: 'none'
+        border: 'none',
+        width: '100%'
+
     },
     rowValignWrapper: {
         marginBottom: '0%'
