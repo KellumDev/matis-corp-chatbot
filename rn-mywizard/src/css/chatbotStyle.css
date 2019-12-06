@@ -1,8 +1,5 @@
 /* the inside chatbot scrollbar */
-
-/*
-(151, 202, 61)
-*/
+ 
 
 div#chatbot::-webkit-scrollbar {
   width: 10px;
@@ -11,6 +8,24 @@ div#chatbot::-webkit-scrollbar {
 
 div.fade.modal.show::-webkit-scrollbar {
   background-color: white;
+}
+
+.modal {
+  /* padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px; */
+  padding: 0px !important; 
+}
+
+.modal-content {
+  background-color: white;
+  border: none;
+  /* padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px; */
+  padding: 0px !important; 
 }
 
 div#chatbot::-webkit-scrollbar-track {
@@ -30,10 +45,11 @@ div.fade.modal.show {
   position: fixed;
   left: 39%;
   right: 0;
-  top: 23%;
-  background-color: #fafafa;
+  top: 6%;
+  background-color: white;
   max-height: 70%;
-  width: 55%;
+  width: 34%;
+  height: 70%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -41,16 +57,11 @@ div.fade.modal.show {
   padding: 0%;
 }
 
-div.modal-content {
-  background-color: white;
-  border: none;
-  /* padding: 0%;  */
-}
-
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
-    margin: none;
+    margin-bottom: 0px;
+    /* margin: none !important; */
   }
 }
 
@@ -69,7 +80,6 @@ button.chatbot-button.btn.btn-primary {
     left: 454px;
   }
 }
- 
 
 @media only screen and (min-width: 376px) and (max-width: 425px) {
   button.chatbot-button.btn.btn-primary {
@@ -89,7 +99,7 @@ button.chatbot-button.btn.btn-primary {
   }
 }
 
-@media only screen and (min-width:1025px) and (max-width:1440px){
+@media only screen and (min-width:1025px) and (max-width:1440px) {
   button.chatbot-button.btn.btn-primary {
     left: 470px;
   }

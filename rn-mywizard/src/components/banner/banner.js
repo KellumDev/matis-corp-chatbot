@@ -16,9 +16,9 @@ const styles = {
     container: {
         margin:' 2%,',
         position:' absolute',
-        top: '1%',
+        top: '-2%',
         float:' left',
-        width:' 30%',
+        // width:' 30%',
         left: '0%',
     
      },

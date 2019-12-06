@@ -36,12 +36,14 @@ class Landing extends Component {
                 <Row>
                     <Col  >
                         <Image className="mw-background" src={MwBackground} style={styles.mwbackground} responsive />
-                        <Button className="chatbot-button"  bsstyle="primary" bsSize="large" onClick={this.handleShow}>
-                                Launch Hey myWizard
+                        <Button className="chatbot-button" bsstyle="primary" bsSize="large" onClick={this.handleShow}>
+                            Launch Hey myWizard
                             </Button>
-                            <Modal show={this.state.show} onHide={this.handleClose}>
-                                <Chatbot />
-                            </Modal>
+
+                        <Modal show={this.state.show} onHide={this.handleClose}>
+                            <Logo/>
+                            <Chatbot />
+                        </Modal>
                     </Col>
                 </Row>
 

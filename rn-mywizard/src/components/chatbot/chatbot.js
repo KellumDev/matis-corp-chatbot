@@ -324,24 +324,23 @@ class Chatbot extends Component {
 
 const styles = {
     messagesContainer: {
-        height: '550px',
+        height: '200px',
         width: '100%',
         overflow: 'auto', 
         padding: '1%'
     },
     cbcontainer: {
         backgroundColor: 'white',
-        height: '60%', 
-        
-       // borderColor: 'black',
+        height: '10%', 
         border: 'solid 5px #a2c6f6',
         padding: '2%',
         paddingLeft: '3%',
-       
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
         borderTopLeftRadius: '10px',
-        borderTopRightRadius: '10px'
+        borderTopRightRadius: '10px',
+        position: 'relative',
+        top: '40px'
     },
     message: {
         clear: 'both',
