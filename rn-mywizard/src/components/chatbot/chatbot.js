@@ -324,7 +324,8 @@ class Chatbot extends Component {
 
 const styles = {
     messagesContainer: {
-        height: '200px',
+        maxHeight: '460px',
+        height: '450px',
         width: '100%',
         overflow: 'auto', 
         padding: '1%'

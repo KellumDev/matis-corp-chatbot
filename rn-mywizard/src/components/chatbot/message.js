@@ -31,7 +31,8 @@ const Message = (props) => {
 //console.log(props.keys ) key={ props.keys%2 ? styles.botSpeaks.backgroundColor = 'red' :  console.log('user input'  ) } key={ props.keys%2 ?  console.log('bot output'  ) :  Object.assign( {},styles.text, newStyles.text ) }
 const styles = {
     rowValignWrapper: {
-        width: '90%',
+         width: '90%',
+        marginRight: '2%'
         
     },
     text: {

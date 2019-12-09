@@ -48,7 +48,8 @@ div.fade.modal.show {
   top: 6%;
   background-color: white;
   max-height: 70%;
-  width: 34%;
+  max-width: 400px;
+  min-width: 200px;
   height: 70%;
   margin: auto;
   overflow-y: auto;
@@ -57,6 +58,12 @@ div.fade.modal.show {
   padding: 0%;
 }
 
+.modal-backdrop {
+  
+  width: 100%;
+  height: 100%; 
+  
+}
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
