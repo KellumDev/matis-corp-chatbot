@@ -324,8 +324,8 @@ class Chatbot extends Component {
 
 const styles = {
     messagesContainer: {
-        maxHeight: '460px',
-        height: '450px',
+         
+        height: '400px',
         width: '100%',
         overflow: 'auto', 
         padding: '1%'
@@ -341,7 +341,8 @@ const styles = {
         borderTopLeftRadius: '10px',
         borderTopRightRadius: '10px',
         position: 'relative',
-        top: '40px'
+        top: '40px', 
+        marginLeft: '2%'
     },
     message: {
         clear: 'both',
