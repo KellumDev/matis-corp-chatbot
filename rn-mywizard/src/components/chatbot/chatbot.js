@@ -105,7 +105,7 @@ class Chatbot extends Component {
 
                     console.log('[ VOICE  RESPONSE ] \n', botmessage);
                     this.voiceOutput(botmessage);
-                }, 8000);
+                }, 2500);
         }
     }
 
@@ -140,7 +140,7 @@ class Chatbot extends Component {
 
                     console.log('[ VOICE  RESPONSE ] \n', botmessage);
                     this.voiceOutput(botmessage);
-                }, 8000);
+                }, 2500);
 
             }
 
