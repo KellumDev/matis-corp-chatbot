@@ -6,7 +6,7 @@ import LogoBanner from '../../components/images/mywizardbanner.png';
 const Banner = () => {
     return (
         
-        <div style={styles.container} className="Banner-Page" >
+        <div style={styles.container} className="banner-page" >
                <img  style={styles.logo} src={LogoBanner} alt="Hey-myWizard-logo" />
         </div>
     )

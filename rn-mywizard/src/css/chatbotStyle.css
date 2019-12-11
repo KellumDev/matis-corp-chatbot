@@ -1,5 +1,4 @@
 /* the inside chatbot scrollbar */
- 
 
 div#chatbot::-webkit-scrollbar {
   width: 10px;
@@ -17,11 +16,10 @@ div#chatbot::-webkit-scrollbar-thumb {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(162, 198, 246)), color-stop(0.72, rgb(162, 198, 246)), color-stop(0.86, rgb(162, 198, 246)));
 }
 
-
 div.fade.modal.show::-webkit-scrollbar {
   background-color: white;
 }
- 
+
 /* chatbot button  */
 
 button.chatbot-button.btn.btn-primary {
@@ -32,93 +30,63 @@ button.chatbot-button.btn.btn-primary {
   align-items: center;
 }
 
+/* banner area */
+
+div.banner-page {
+  margin: 2%;
+  position: absolute;
+  top: -1%;
+  float: left;
+  left: 2%;
+}
+
 /**************** Modal area *************/
 
-/* .modal {
-  
-  padding: 0px !important; 
-} */
-
-/* 
-.modal-content {
-  background-color: white;
-  border: none;
-   
-  padding: 0px !important; 
-} */
-
-  
 div.fade.modal.show {
   background-color: white;
   min-height: 610px;
-  /* min-height: 855px;   */
-  /* margin: 0;
-  display: none;
-  position: fixed;
-  left: 39%;
-  right: 0;
-  top: 6%;
-  background-color: white;
-  max-height: 70%;
-  max-width: 400px;
-  min-width: 200px;
-  height: 70%;
-  margin: auto;
-  overflow-y: auto;
-  border-radius: 2px;
-  will-change: top, opacity;
-  padding: 0%; */
-} 
+  margin-top: 2%;
+}
 
-div.modal-dialog{
-   
+div.modal-dialog {
   max-width: 100%;
 }
 
-div.modal-content{
+div.modal-content {
   background-color: white;
-  padding: 0px !important; 
+  padding: 0px !important;
   border: none !important;
 }
- 
- 
+
 @media only screen and (min-width: 320px) and (max-width: 375px) {
   button.chatbot-button.btn.btn-primary {
     left: 454px;
   }
-
-  /* div.fade.modal.show{
-    
-    
-  } */
-
 }
 
 @media only screen and (min-width: 376px) and (max-width: 425px) {
   button.chatbot-button.btn.btn-primary {
     left: 455px;
   }
- 
-  div.fade.modal.show{
-    background-color: red; 
-  }  
-
-
+  div.fade.modal.show {
+    /* background-color: red; */
+  }
 }
 
 @media only screen and (min-width: 377px) and (max-width: 768px) {
   button.chatbot-button.btn.btn-primary {
     left: 460px;
   }
-
-  
-  div.fade.modal.show{
-    max-width: 500px; 
-    /* background-color: orange;  */
+  div.fade.modal.show {
+    max-width: 500px;
+    /* background-color: orange; */
     padding-right: 2%;
     max-height: 640px;
-  }  
-
+  }
+  div.banner-page {
+    top: -1%;
+    left: 2%;
+  }
 }
 
 @media only screen and (min-width: 767px) and (max-width:1024px) {
@@ -126,24 +94,27 @@ div.modal-content{
     left: 465px;
   }
 
-  div.fade.modal.show{
-    max-width: 500px; 
-    /* background-color: blue;  */
-    padding-right: 2%;
+  div.banner-page {
+    top: -1%;
+    left: 2%;
+  }
+
+  div.fade.modal.show {
+    max-width: 500px;
+    /* background-color: blue; */
+    padding-right: 0.5%;
     max-height: 640px;
-  } 
+  }
 }
 
-@media only screen and (min-width:1025px) and (max-width:1440px) {
+@media only screen and (min-width:1025px) {
   button.chatbot-button.btn.btn-primary {
     left: 470px;
   }
- 
-  div.fade.modal.show{
-    max-width: 500px; 
-    /* background-color: green;  */
-    padding-right: 2%;
+  div.fade.modal.show {
+    max-width: 500px;
+    /* background-color: green; */
+    padding-right: 0.5%;
     max-height: 640px;
   }
-  
 }
